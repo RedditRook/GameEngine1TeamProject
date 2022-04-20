@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
 
 	GameObject player;
 	// Start is called before the first frame update
+	//업데이트
 	void Start()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
