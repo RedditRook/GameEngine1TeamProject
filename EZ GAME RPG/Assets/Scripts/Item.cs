@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Item : MonoBehaviour
+[CreateAssetMenu(fileName = "Make Item", menuName = "Make Item/Item")]
+public class Item : ScriptableObject
 {
-    enum ITEMCODE 
-    { 
-        BASIC_SWORD,
-        BASIC_SHIELD,
-        BASIC_HELMET,
-        BASIC_ARMOR,
-        BASIC_LEGGINGS
-    };
-    private string name;
-    private int value;
-    private int code;
+    public enum ITEMTYPE
+    {
+        equipment,
+        consumable,
+        material,
+    }
+
+    public ITEMTYPE item_type;
+    public string name;
+    public Sprite item_image;
+    public GameObject item_prefab;
 }
