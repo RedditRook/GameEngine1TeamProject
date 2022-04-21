@@ -29,7 +29,9 @@ public class InputManager : MonoBehaviour
 			{
 				if (hit.collider.gameObject.name == "Terrain")
 				{
-					player.transform.position = hit.point;
+					//player.transform.position = hit.point;
+
+					player.GetComponent<PlayerFSM>().MoveTo(hit.point);
 				}
 			}
 		}
