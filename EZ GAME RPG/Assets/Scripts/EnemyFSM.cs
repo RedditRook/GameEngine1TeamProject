@@ -19,17 +19,16 @@ public class EnemyFSM : MonoBehaviour
 
 	Transform player;
 
-	float chase_distance = 100f;  // 추적 시작 거리
+	float chase_distance = 35f;  // 추적 시작 거리
 	float attack_distance = 10f; // 공격 시작 범위
-	float re_chase_distance = 100f; // 추적 시작 거리
+	float re_chase_distance = 14.5f; // 추적 시작 거리
 
 	float rotAnglePerSec = 360f; //초당 회전 각도
-	float moveSpeed = 25f;    //몬스터 이동속도
+	float moveSpeed = 10f;    //몬스터 이동속도
 
 	float attackDelay = 2f;
 	float attackTimer = 0f;
 	 void Start()
-
 	{
 		myAni = GetComponent<EnemyAni>();
 		ChangeState(State.Idle, EnemyAni.IDLE);
