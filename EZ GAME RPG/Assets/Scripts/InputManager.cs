@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-
 	GameObject player;
-	// Start is called before the first frame update
-	//업데이트
-	void Start()
+
+	private void Awake()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
+	}
+
+	// Start is called before the first frame update
+	void Start()
+	{
 
 	}
 
@@ -31,6 +34,7 @@ public class InputManager : MonoBehaviour
 			}
 		}
 	}
+
 	// Update is called once per frame
 	void Update()
     {

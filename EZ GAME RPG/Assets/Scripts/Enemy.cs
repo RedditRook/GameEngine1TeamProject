@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
     }
 
-     void Update()
+    void Update()
     {
         nav.SetDestination(target.position);   
     }
