@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour
 
 	void MouseCheck()
 	{
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(1))
 		{
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
