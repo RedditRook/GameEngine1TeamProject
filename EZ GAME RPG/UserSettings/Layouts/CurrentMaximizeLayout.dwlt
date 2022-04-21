@@ -19,12 +19,16 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
-    width: 1904
-    height: 931
+    width: 1920
+    height: 947
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
+<<<<<<< HEAD
   controlID: 109
+=======
+  controlID: 9335
+>>>>>>> origin/YunZe
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -47,9 +51,15 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 380
+<<<<<<< HEAD
     y: 81
     width: 1144
     height: 542
+=======
+    y: 19
+    width: 1150
+    height: 552
+>>>>>>> origin/YunZe
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -60,7 +70,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 926, y: 521}
+  m_TargetSize: {x: 944, y: 531}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -75,10 +85,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -463
-    m_HBaseRangeMax: 463
-    m_VBaseRangeMin: -260.5
-    m_VBaseRangeMax: 260.5
+    m_HBaseRangeMin: -472
+    m_HBaseRangeMax: 472
+    m_VBaseRangeMin: -265.5
+    m_VBaseRangeMax: 265.5
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -87,7 +97,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -96,16 +106,24 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
+<<<<<<< HEAD
       width: 1144
       height: 521
     m_Scale: {x: 1, y: 1}
     m_Translation: {x: 572, y: 260.5}
+=======
+      width: 1150
+      height: 531
+    m_Scale: {x: 1, y: 1}
+    m_Translation: {x: 575, y: 265.5}
+>>>>>>> origin/YunZe
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
+<<<<<<< HEAD
       x: -572
       y: -260.5
       width: 1144
@@ -113,6 +131,15 @@ MonoBehaviour:
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 1144, y: 542}
+=======
+      x: -575
+      y: -265.5
+      width: 1150
+      height: 531
+    m_MinimalGUI: 1
+  m_defaultScale: 1
+  m_LastWindowPixelSize: {x: 1150, y: 552}
+>>>>>>> origin/YunZe
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -137,12 +164,16 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1518
-    height: 931
+    width: 1531
+    height: 947
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
+<<<<<<< HEAD
   controlID: 55
+=======
+  controlID: 9309
+>>>>>>> origin/YunZe
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -162,12 +193,16 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1518
-    height: 563
+    width: 1531
+    height: 573
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
+<<<<<<< HEAD
   controlID: 46
+=======
+  controlID: 9310
+>>>>>>> origin/YunZe
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -185,8 +220,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 372
     height: 563
+=======
+    width: 379
+    height: 573
+>>>>>>> origin/YunZe
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 6}
@@ -215,10 +255,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 8
     y: 81
     width: 371
     height: 542
+=======
+    x: 0
+    y: 73
+    width: 378
+    height: 552
+>>>>>>> origin/YunZe
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -228,18 +275,30 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
+<<<<<<< HEAD
       m_ExpandedIDs: 38fbffff584b00006a4b0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: "\uAC8C\uC784 \uC5D4\uC9C4 \uBC30\uACBD \uC7AC\uD65C\uC6A9"
         m_OriginalName: "\uAC8C\uC784 \uC5D4\uC9C4 \uBC30\uACBD \uC7AC\uD65C\uC6A9"
+=======
+      m_ExpandedIDs: fef9ffff04faffff38fbffff364b0000564b0000a64b0000be4b0000
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: Status Bar
+        m_OriginalName: Status Bar
+>>>>>>> origin/YunZe
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
+<<<<<<< HEAD
         m_UserData: -1242
+=======
+        m_UserData: 19318
+>>>>>>> origin/YunZe
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 0
@@ -267,10 +326,17 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 372
     y: 0
     width: 1146
     height: 563
+=======
+    x: 379
+    y: 0
+    width: 1152
+    height: 573
+>>>>>>> origin/YunZe
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 2}
@@ -302,10 +368,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 380
     y: 81
     width: 1144
     height: 542
+=======
+    x: 379
+    y: 73
+    width: 1150
+    height: 552
+>>>>>>> origin/YunZe
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -507,9 +580,15 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
     m_Target: {x: 2.8980143, y: -12.737477, z: 24.749361}
     speed: 2
     m_Value: {x: 2.8980143, y: -12.737477, z: 24.749361}
+=======
+    m_Target: {x: 466.80515, y: 239.00368, z: -1.5801392}
+    speed: 2
+    m_Value: {x: 466.80515, y: 239.00368, z: -1.5801392}
+>>>>>>> origin/YunZe
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -519,10 +598,10 @@ MonoBehaviour:
   m_DoValidateTrueMetals: 0
   m_ExposureSliderValue: 0
   m_SceneViewState:
-    m_AlwaysRefresh: 0
+    m_AlwaysRefresh: 1
     showFog: 1
     showSkybox: 1
-    showFlares: 1
+    showFlares: 0
     showImageEffects: 1
     showParticleSystems: 1
     showVisualEffectGraphs: 1
@@ -556,6 +635,7 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
+<<<<<<< HEAD
     m_Target: {x: -0.24787745, y: 0.006995085, z: -0.0017976125, w: -0.9687471}
     speed: 2
     m_Value: {x: -0.24788164, y: 0.006995203, z: -0.0017976428, w: -0.9687634}
@@ -563,10 +643,19 @@ MonoBehaviour:
     m_Target: 18.481947
     speed: 2
     m_Value: 18.481947
-  m_Ortho:
-    m_Target: 0
+=======
+    m_Target: {x: 0.039287534, y: -0.023984084, z: 0.0009389109, w: 0.99892837}
     speed: 2
-    m_Value: 0
+    m_Value: {x: 0.039287977, y: -0.023984354, z: 0.00093892147, w: 0.99893963}
+  m_Size:
+    m_Target: 401.44833
+    speed: 2
+    m_Value: 401.44833
+>>>>>>> origin/YunZe
+  m_Ortho:
+    m_Target: 1
+    speed: 2
+    m_Value: 1
   m_CameraSettings:
     m_Speed: 2
     m_SpeedNormalized: 1
@@ -693,24 +782,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+<<<<<<< HEAD
   m_Name: ConsoleWindow
+=======
+  m_Name: 
+>>>>>>> origin/YunZe
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 563
     width: 1518
     height: 368
   m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 13}
+=======
+    y: 573
+    width: 1531
+    height: 374
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+  m_ActualView: {fileID: 11}
+>>>>>>> origin/YunZe
   m_Panes:
   - {fileID: 12}
+<<<<<<< HEAD
   - {fileID: 13}
   m_Selected: 1
   m_LastSelected: 0
 --- !u!114 &12
+=======
+  m_Selected: 0
+  m_LastSelected: 0
+--- !u!114 &11
+>>>>>>> origin/YunZe
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -731,10 +839,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 8
-    y: 644
-    width: 1517
-    height: 347
+    x: 0
+    y: 646
+    width: 1530
+    height: 353
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -765,9 +873,15 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
     m_SelectedIDs: 365c0000
     m_LastClickedID: 23606
     m_ExpandedIDs: 00000000165c00001a5c00001c5c00001e5c00002e5c000000ca9a3b
+=======
+    m_SelectedIDs: 504c0000
+    m_LastClickedID: 19536
+    m_ExpandedIDs: 00000000444c0000
+>>>>>>> origin/YunZe
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -795,7 +909,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000165c0000185c00001a5c00001c5c00001e5c0000205c0000
+=======
+    m_ExpandedIDs: 00000000444c0000
+>>>>>>> origin/YunZe
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -820,10 +938,17 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
+<<<<<<< HEAD
     m_SelectedInstanceIDs: 26fbffff
     m_LastClickedInstanceID: -1242
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300008a7b0000cacb0000d4cb00007c940000caaa0000b04b0000
+=======
+    m_SelectedInstanceIDs: 8a6effff
+    m_LastClickedInstanceID: -37238
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c6230000
+>>>>>>> origin/YunZe
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -873,9 +998,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 8
-    y: 644
-    width: 1517
-    height: 347
+    y: 718
+    width: 1366
+    height: 308
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -895,13 +1020,21 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1518
+    x: 1531
     y: 0
+<<<<<<< HEAD
     width: 386
     height: 931
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
+=======
+    width: 389
+    height: 947
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 14}
+>>>>>>> origin/YunZe
   m_Panes:
   - {fileID: 15}
   - {fileID: 16}
@@ -928,10 +1061,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1526
-    y: 81
-    width: 385
-    height: 910
+    x: 1531
+    y: 73
+    width: 388
+    height: 926
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -942,7 +1075,11 @@ MonoBehaviour:
     m_CachedPref: -160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
+<<<<<<< HEAD
   m_LastInspectedObjectInstanceID: 19296
+=======
+  m_LastInspectedObjectInstanceID: -37238
+>>>>>>> origin/YunZe
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
