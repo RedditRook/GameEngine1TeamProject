@@ -1,11 +1,9 @@
-using UnityEngine;
-
 public class QuestNPC : NPC
 {
 	// Start is called before the first frame update
 	public override void Start()
 	{
-		name = "quest";
+		name = "카린";
 	}
 
 	// Update is called once per frame
@@ -17,5 +15,14 @@ public class QuestNPC : NPC
 	public override void ShowUI()
 	{
 		print(name);
+		print("모험가 길드에 오신 것을 환영합니다.");
+		print("현재 수행 가능한 퀘스트 목록입니다.");
+	}
+
+	public override void HideUI()
+	{
+		print(name);
+		print("이용해 주셔서 감사합니다.");
+		print("다음에 또 이용해 주세요.");
 	}
 }

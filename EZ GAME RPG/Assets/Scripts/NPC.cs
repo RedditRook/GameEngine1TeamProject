@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC : MonoBehaviour
+public abstract class NPC : MonoBehaviour
 {
 	// 변수 목록
 	private Rigidbody rigid_body;
@@ -21,7 +21,7 @@ public class NPC : MonoBehaviour
 	// Start is called before the first frame update
 	public virtual void Start()
 	{
-
+		
 	}
 
 	// Update is called once per frame
@@ -31,10 +31,8 @@ public class NPC : MonoBehaviour
 	}
 
 	// 플레이어와 상호작용이 이뤄졌을 때 UI를 표시하는 함수
-	public virtual void ShowUI()
-	{
-		print("npc");
-	}
+	public abstract void ShowUI();
+	public abstract void HideUI();
 
 	public string Name
 	{

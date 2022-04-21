@@ -5,12 +5,12 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
 	GameObject player;
-	List<GameObject> npcs;
+	GameObject npc;
 
 	private void Awake()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
-		npcs = new List<GameObject>();
+		npc = GameObject.FindGameObjectWithTag("NPC").transform.GetChild(0).gameObject;
 	}
 
 	// Start is called before the first frame update
@@ -21,7 +21,7 @@ public class InputManager : MonoBehaviour
 
 	void MouseCheck()
 	{
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0) && !player.GetComponent<Player>().is_interacting)
 		{
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -42,20 +42,42 @@ public class InputManager : MonoBehaviour
 	void KeyboardCheck()
 	{
 		// NPC 상호작용 키
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.Space) && !player.GetComponent<Player>().is_interacting)
 		{
+			float min_distance = 100.0f;
+
 			for (int i = 0; i < GameObject.FindGameObjectWithTag("NPC").transform.childCount; ++i)
 			{
-				npcs.Add(GameObject.FindGameObjectWithTag("NPC").transform.GetChild(i).gameObject);
+				GameObject temp_npc = GameObject.FindGameObjectWithTag("NPC").transform.GetChild(i).gameObject;
+				float distance = Vector3.Distance(player.transform.position, temp_npc.transform.position);
+
+				if (min_distance > distance)
+				{
+					min_distance = distance;
+					npc = temp_npc;
+				}
 			}
 
-				float distance = Vector3.Distance(player.transform.position, npc.transform.position);
-
-				if (distance < 5.0f)
-				{
-					npc.SendMessage("ShowUI");
-				}
+			if (min_distance < 5.0f)
+			{
+				player.GetComponent<Player>().is_interacting = true;
+				npc.SendMessage("ShowUI");
+			}
 		}
+
+		// 플레이어가 NPC와의 상호작용 종료 시
+		if (Input.GetKeyDown(KeyCode.Escape) && player.GetComponent<Player>().is_interacting)
+		{
+			player.GetComponent<Player>().is_interacting = false;
+			npc.SendMessage("HideUI");
+		}
+
+		// for debugging
+		// if (player.GetComponent<Player>().is_interacting)
+		// {
+		// 	player.GetComponent<Player>().is_interacting = false;
+		// 	npc.SendMessage("HideUI");
+		// }
 	}
 
 	// Update is called once per frame
