@@ -26,6 +26,6 @@ public class PlayerAni : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+		
     }
 }

@@ -46,13 +46,26 @@ public class PlayerFSM : MonoBehaviour
 		switch(currentState)
         {
 			case STATE.IDLE:
+				IdleState();
 				break;
 			case STATE.WALK:
-				TurnToDes();
-				MoveToDes();
+				MoveState();
 				break;
         }
     }
+
+	void IdleState()
+    {
+
+    }
+
+	void MoveState()
+    {
+		TurnToDes();
+		MoveToDes();
+	}
+
+
 
 	public void MoveTo(Vector3 tPos)
     {
