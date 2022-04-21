@@ -15,23 +15,18 @@ public class Inventory : MonoBehaviour
     private InventorySlot[] slots;  // ½½·Ôµé ¹è¿­
 
     public Item for_test;
-    public Sprite for_test_image;
-    public Item 
+
     void Start()
     {
+        inventory_image.SetActive(false);
         slots = slots_parent.GetComponentsInChildren<InventorySlot>();
-        for_test.item_type = Item.ITEMTYPE.material;
-        for_test.name = "°¡Á×";
-        for_test.item_image = for_test_image;
-
-
-   GameObject item_prefab;
-
-}
+    }
 
     void Update()
     {
         TryOpenInventory();
+        CheatGetLeather();
+        CheatGetLeatherLow();
     }
 
     private void TryOpenInventory()
@@ -67,7 +62,16 @@ public class Inventory : MonoBehaviour
                 {
                     if (slots[i].item.name == _item.name)
                     {
-                        slots[i].SetSlotCount(_count);
+                        if(slots[i].item_count <= 0 && _count < 0)
+                        {
+                            Debug.Log("°Ù¼ö ºÎÁ·");
+                            return;
+                        }
+                        else
+                        {
+                            slots[i].SetSlotCount(_count);
+                            Debug.Log(slots[i].item_count);
+                        }
                         return;
                     }
                 }
@@ -78,7 +82,13 @@ public class Inventory : MonoBehaviour
         {
             if (slots[i].item == null)
             {
-                slots[i].AddItem(_item, _count);
+                if (_count < 0)
+                {
+                    Debug.Log("°Ù¼ö ºÎÁ·");
+                    return;
+                }
+                else
+                    slots[i].AddItem(_item, _count);
                 return;
             }
         }
@@ -86,10 +96,18 @@ public class Inventory : MonoBehaviour
 
     public void CheatGetLeather()
     {
-        Item CheatLeather;
         if (Input.GetKeyDown(KeyCode.L))
         {
-            get
+            GetItem(for_test, 1);
+            Debug.Log("°¡Á× Ãß°¡");
+        }
+    }
+    public void CheatGetLeatherLow()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            GetItem(for_test, -1);
+            Debug.Log("°¡Á× °¨¼Ò");
         }
     }
 }

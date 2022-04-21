@@ -12,7 +12,7 @@ public class InventorySlot : MonoBehaviour      //인벤토리 슬롯에
     public Image item_image;    //아이템 이미지
 
     [SerializeField]
-    private Text text_Count;
+    private TextMeshProUGUI text_Count;
 
     private void SetColor(float _alpha)     //아이템 투명도 조절(삭제시 알파0, 생성시 알파1)
     {
@@ -29,11 +29,11 @@ public class InventorySlot : MonoBehaviour      //인벤토리 슬롯에
 
         if (item.item_type != Item.ITEMTYPE.equipment)
         {
-            text_Count.text = item_count.ToString();
+            text_Count.text = item.name + "(" + item_count.ToString() + ")";
         }
         else
         {
-            text_Count.text = "0";
+            text_Count.text = "";
         }
         SetColor(1);
     }
@@ -41,7 +41,7 @@ public class InventorySlot : MonoBehaviour      //인벤토리 슬롯에
     public void SetSlotCount(int _count)    //슬롯에 아이템의 수가 변할 때
     {
         item_count += _count;
-        text_Count.text = item_count.ToString();
+        text_Count.text = item.name + "(" + item_count.ToString() + ")";
 
         if (item_count <= 0)
             ClearSlot();
