@@ -218,6 +218,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2353b3f9a238f6438ac1d0bd605be3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
+  rotAnglePerSecond: 360
+  moveSpeed: 2
+--- !u!114 &410122539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410122533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579859a14cabb1449a8602a44ca660c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &698426620
 GameObject:
   m_ObjectHideFlags: 0
