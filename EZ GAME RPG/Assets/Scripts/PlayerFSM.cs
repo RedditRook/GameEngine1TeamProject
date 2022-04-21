@@ -33,6 +33,10 @@ public class PlayerFSM : MonoBehaviour
 
 	PlayerAni myAni;
 
+	PlayerParams myParams;
+
+	EnemyParams curEnemyParams;
+
 	
 
 	// Start is called before the first frame update
@@ -42,9 +46,24 @@ public class PlayerFSM : MonoBehaviour
 		myAni = GetComponent<PlayerAni>();
 		// myAni.ChangeAni(PlayerAni.ANI_WALK)
 
+		myParams = GetComponent<PlayerParams>();
+
+		myParams.InitParams();
+
 		ChangeState(STATE.IDLE, PlayerAni.ANI_IDLE);
 	}
 
+	public void AttackCal()
+	{
+		if(curEnemy == null)
+		{
+			return;
+		}
+		curEnemy.GetComponent<EnemyFSM>().ShowHitEffect();
+
+		int attackpower = myParams.GetAttack();
+		curEnemyParams.SetEnemyAttack(attackpower);
+	}
 	public void AttackEnemy(GameObject enemy)
 	{
 		if(curEnemy!= null&&curEnemy ==enemy)
@@ -52,10 +71,20 @@ public class PlayerFSM : MonoBehaviour
 			return;
 		}
 
-		curEnemy = enemy;
-		curTargetPos = curEnemy.transform.position;
+		curEnemyParams = enemy.GetComponent<EnemyParams>();
+		if (curEnemyParams.isDead == false)
+		{
 
-		ChangeState(STATE.WALK, PlayerAni.ANI_WALK);
+			curEnemy = enemy;
+			curTargetPos = curEnemy.transform.position;
+
+			ChangeState(STATE.WALK, PlayerAni.ANI_WALK);
+		}
+
+		else
+		{
+			curEnemyParams = null;
+		}
 	}
 	void ChangeState(STATE newState, int aniNumber)
     {

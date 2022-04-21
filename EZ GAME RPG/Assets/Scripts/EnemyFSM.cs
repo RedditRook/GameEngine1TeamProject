@@ -28,6 +28,9 @@ public class EnemyFSM : MonoBehaviour
 
 	float attackDelay = 2f;
 	float attackTimer = 0f;
+
+
+	public ParticleSystem hitEffects;
 	 void Start()
 
 	{
@@ -35,6 +38,13 @@ public class EnemyFSM : MonoBehaviour
 		ChangeState(State.Idle, EnemyAni.IDLE);
 
 		player = GameObject.FindGameObjectWithTag("Player").transform;
+
+		hitEffects.Stop();
+	}
+
+	public void ShowHitEffect()
+	{
+		hitEffects.Play();
 	}
 	void UpdateState()
 	{
