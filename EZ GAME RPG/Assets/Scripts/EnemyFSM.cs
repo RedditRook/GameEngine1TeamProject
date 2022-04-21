@@ -15,9 +15,13 @@ public class EnemyFSM : MonoBehaviour
 
 	public State current_state = State.Idle;
 
+	EnemyParams myParams;
+
 	EnemyAni myAni;
 
 	Transform player;
+
+	PlayerParams playerParams;
 
 	float chase_distance = 100f;  // 추적 시작 거리
 	float attack_distance = 10f; // 공격 시작 범위
@@ -35,13 +39,23 @@ public class EnemyFSM : MonoBehaviour
 
 	{
 		myAni = GetComponent<EnemyAni>();
+		myParams = GetComponent<EnemyParams>();
+		myParams.deadEvent.AddListener(CallDeadEvent);
+		
 		ChangeState(State.Idle, EnemyAni.IDLE);
 
 		player = GameObject.FindGameObjectWithTag("Player").transform;
+		playerParams = player.gameObject.GetComponent<PlayerParams>();
 
 		hitEffects.Stop();
 	}
 
+
+	void CallDeadEvent()
+	{
+		ChangeState(State.Dead, EnemyAni.DIE);
+		player.gameObject.SendMessage("KILL");
+	}
 	public void ShowHitEffect()
 	{
 		hitEffects.Play();
@@ -123,7 +137,7 @@ public class EnemyFSM : MonoBehaviour
 
 	void DeadState()
 	{
-
+		GetComponent<BoxCollider>().enabled = false;
 	}
 
 	void NoState()

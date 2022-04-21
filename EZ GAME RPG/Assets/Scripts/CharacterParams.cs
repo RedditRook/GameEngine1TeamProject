@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CharacterParams : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class CharacterParams : MonoBehaviour
 	public int level { get; set; }
 
 	public bool isDead { get; set; }
+
+	[System.NonSerialized]
+	public UnityEvent deadEvent = new UnityEvent();
 
 	// Start is called before the first frame update
 	void Start()
@@ -40,6 +44,14 @@ public class CharacterParams : MonoBehaviour
 	protected virtual void UpdateAfterReceiveAttack()
 	{
 		print(name + "s HP:" + curHp);
+
+		if(curHp <= 0)
+		{
+		
+			curHp = 0;
+			isDead = true;
+			deadEvent.Invoke();
+		}
 	}
 	// Update is called once per frame
 	void Update()
