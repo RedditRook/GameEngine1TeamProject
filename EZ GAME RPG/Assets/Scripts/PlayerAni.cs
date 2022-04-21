@@ -8,6 +8,9 @@ public class PlayerAni : MonoBehaviour
 
 	public const int ANI_IDLE = 0;
 	public const int ANI_WALK = 1;
+	public const int ANI_ATTACK = 2;
+	public const int ANI_ATKIDLE = 3;
+	public const int ANI_DEAD = 4;
 
 	Animator anim;
     

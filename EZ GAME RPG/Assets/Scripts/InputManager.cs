@@ -30,6 +30,11 @@ public class InputManager : MonoBehaviour
 
 					player.GetComponent<PlayerFSM>().MoveTo(hit.point);
 				}
+
+				else if(hit.collider.gameObject.tag == "Enemy")
+				{
+					player.GetComponent<PlayerFSM>().AttackEnemy(hit.collider.gameObject);
+				}
 			}
 		}
 	}
