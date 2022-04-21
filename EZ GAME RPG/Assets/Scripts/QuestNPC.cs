@@ -1,14 +1,18 @@
-public class QuestNPC : BaseNPC
+public class QuestNPC : NPC
 {
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        
+		show_ui = true;
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
-        
+        if (show_ui)
+		{
+			// UI 표시
+			
+		}
     }
 }

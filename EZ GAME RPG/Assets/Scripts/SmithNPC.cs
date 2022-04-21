@@ -1,4 +1,4 @@
-public class SmithNPC : BaseNPC
+public class SmithNPC : NPC
 {
     // Start is called before the first frame update
     public override void Start()
