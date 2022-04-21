@@ -18,14 +18,14 @@ public abstract class NPC : MonoBehaviour
 		rigid_body = GetComponent<Rigidbody>();
 	}
 
-    // Start is called before the first frame update
-    public abstract void Start();
+	// Start is called before the first frame update
+	public abstract void Start();
 
-    // Update is called once per frame
-    public virtual void Update()
-    {
-        
-    }
+	// Update is called once per frame
+	public virtual void Update()
+	{
+
+	}
 
 	public string Name
 	{
