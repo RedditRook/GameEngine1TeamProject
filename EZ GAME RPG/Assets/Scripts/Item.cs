@@ -13,7 +13,8 @@ public class Item : MonoBehaviour
 		BASIC_ARMOR,
 		BASIC_LEGGINGS
 	};
-	private string name;
+	
+	private new string name;
 	private int value;
 	private int code;
 }
