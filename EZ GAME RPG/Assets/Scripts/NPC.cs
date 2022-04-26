@@ -10,7 +10,6 @@ public abstract class NPC : MonoBehaviour
 	protected Vector3 position;
 
 	private Player player;
-	public Animator ani;
 
 	// 퀘스트, 제작, 상점
 
