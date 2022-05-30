@@ -1,27 +1,27 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class InventorySlot : MonoBehaviour      //ÀÎº¥Åä¸® ½½·Ô¿¡ 
+public class InventorySlot : MonoBehaviour      //ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì— 
 {
-    public Item item;           //¾ÆÀÌÅÛ °´Ã¼
-    public TextMeshPro text;    //¾ÆÀÌÅÛ ÀÌ¸§ ¹× °Ù¼ö Ãâ·Â TMPtext
-    public int item_count;      //¾ÆÀÌÅÛ °Ù¼ö
-    public Image item_image;    //¾ÆÀÌÅÛ ÀÌ¹ÌÁö
+    public Item item;           //ì•„ì´í…œ ê°ì²´
+    public TextMeshPro text;    //ì•„ì´í…œ ì´ë¦„ ë° ê²Ÿìˆ˜ ì¶œë ¥ TMPtext
+    public int item_count;      //ì•„ì´í…œ ê²Ÿìˆ˜
+    public Image item_image;    //ì•„ì´í…œ ì´ë¯¸ì§€
 
     [SerializeField]
     private TextMeshProUGUI text_Count;
 
-    private void SetColor(float _alpha)     //¾ÆÀÌÅÛ Åõ¸íµµ Á¶Àı(»èÁ¦½Ã ¾ËÆÄ0, »ı¼º½Ã ¾ËÆÄ1)
+    private void SetColor(float _alpha)     //ì•„ì´í…œ íˆ¬ëª…ë„ ì¡°ì ˆ(ì‚­ì œì‹œ ì•ŒíŒŒ0, ìƒì„±ì‹œ ì•ŒíŒŒ1)
     {
         Color color = item_image.color;
         color.a = _alpha;
         item_image.color = color;
     }
 
-    public void AddItem(Item _item, int _count = 1) //½½·Ô¿¡ ¾ÆÀÌÅÛÀÌ Ãß°¡µÉ ¶§
+    public void AddItem(Item _item, int _count = 1) //ìŠ¬ë¡¯ì— ì•„ì´í…œì´ ì¶”ê°€ë  ë•Œ
     {
         item = _item;
         item_count = _count;
@@ -33,12 +33,12 @@ public class InventorySlot : MonoBehaviour      //ÀÎº¥Åä¸® ½½·Ô¿¡
         }
         else
         {
-            text_Count.text = "";
+            text_Count.text = " ";
         }
         SetColor(1);
     }
 
-    public void SetSlotCount(int _count)    //½½·Ô¿¡ ¾ÆÀÌÅÛÀÇ ¼ö°¡ º¯ÇÒ ¶§
+    public void SetSlotCount(int _count)    //ìŠ¬ë¡¯ì— ì•„ì´í…œì˜ ìˆ˜ê°€ ë³€í•  ë•Œ
     {
         item_count += _count;
         text_Count.text = item.name + "(" + item_count.ToString() + ")";
@@ -47,7 +47,7 @@ public class InventorySlot : MonoBehaviour      //ÀÎº¥Åä¸® ½½·Ô¿¡
             ClearSlot();
     }
 
-    private void ClearSlot()                //½½·Ô¿¡ ¾ÆÀÌÅÛÀÌ ¾ø¾îÁú ¶§
+    private void ClearSlot()                //ìŠ¬ë¡¯ì— ì•„ì´í…œì´ ì—†ì–´ì§ˆ ë•Œ
     {
         item = null;
         item_count = 0;

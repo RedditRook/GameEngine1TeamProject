@@ -50,7 +50,14 @@ public class PlayerFSM : MonoBehaviour
 
 		myParams.InitParams();
 
+		myParams.deadEvent.AddListener(ChangeToPlayerDead);
+
 		ChangeState(STATE.IDLE, PlayerAni.ANI_IDLE);
+	}
+
+	public void ChangeToPlayerDead()
+	{
+		ChangeState(STATE.Dead, PlayerAni.ANI_DEAD);
 	}
 
 	public void AttackCal()
@@ -151,10 +158,14 @@ public class PlayerFSM : MonoBehaviour
 
 	void DeadState()
 	{
-
+		
 	}
 	public void MoveTo(Vector3 tPos)
     {
+		if(currentState ==STATE.Dead)
+		{
+			return;
+		}
 		curEnemy = null;
 		curTargetPos = tPos;
 		ChangeState(STATE.WALK, PlayerAni.ANI_WALK);

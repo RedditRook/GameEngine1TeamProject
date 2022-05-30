@@ -23,9 +23,9 @@ public class EnemyFSM : MonoBehaviour
 
 	PlayerParams playerParams;
 
-	float chase_distance = 100f;  // 추적 시작 거리
-	float attack_distance = 10f; // 공격 시작 범위
-	float re_chase_distance = 100f; // 추적 시작 거리
+	float chase_distance = 30f;  // 추적 시작 거리
+	float attack_distance = 15f; // 공격 시작 범위
+	float re_chase_distance =  14.5f; // 추적 시작 거리
 
 	float rotAnglePerSec = 360f; //초당 회전 각도
 	float moveSpeed = 25f;    //몬스터 이동속도
@@ -50,6 +50,14 @@ public class EnemyFSM : MonoBehaviour
 		hitEffects.Stop();
 	}
 
+
+	public void AttackCal()
+	{
+		
+
+		int attackpower = playerParams.GetAttack();
+		myParams.SetEnemyAttack(attackpower);
+	}
 
 	void CallDeadEvent()
 	{

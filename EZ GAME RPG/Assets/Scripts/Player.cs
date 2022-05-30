@@ -60,7 +60,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hp -= 0.01f;
-        mp -= 0.01f;
+       
     }
 }

@@ -11,9 +11,9 @@ public class EnemyParams : CharacterParams
 	public override void InitParams()
 	{
 		name = "Spider";
-		maxHp = 50;
+		maxHp = 200;
 		curHp = maxHp;
-		attack = 10;
+		attack = 50;
 		defense = 5;
 		DropGold = 20;
 

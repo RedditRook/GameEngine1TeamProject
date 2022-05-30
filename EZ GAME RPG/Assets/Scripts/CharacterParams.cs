@@ -47,7 +47,6 @@ public class CharacterParams : MonoBehaviour
 
 		if(curHp <= 0)
 		{
-		
 			curHp = 0;
 			isDead = true;
 			deadEvent.Invoke();

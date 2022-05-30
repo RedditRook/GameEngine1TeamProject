@@ -24,7 +24,7 @@ public class InputManager : MonoBehaviour
 
 			if (Physics.Raycast(ray, out hit))
 			{
-				if (hit.collider.gameObject.name == "Terrain")
+				if (hit.collider.gameObject.name == "Plane003")
 				{
 					//player.transform.position = hit.point;
 
