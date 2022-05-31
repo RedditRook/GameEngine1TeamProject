@@ -1,8 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Make Item", menuName = "Make Item/Item")]
+[CreateAssetMenu(fileName = "Make", menuName = "Make/Item")]
 public class Item : ScriptableObject
 {
     public enum ITEMTYPE
