@@ -39,7 +39,7 @@ public class SkillBar : MonoBehaviour
 
 	public void CheatGetSkill()
 	{
-		if (Input.GetKeyDown(KeyCode.K))
+		if (Input.GetKeyDown(KeyCode.J))
 		{
 			GetSkill(for_test);
 			Debug.Log("스킬 추가");
