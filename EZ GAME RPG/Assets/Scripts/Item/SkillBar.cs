@@ -14,12 +14,12 @@ public class SkillBar : MonoBehaviour
 	public PlayerSkill for_test;
 
 	void Start()
-    {
+	{
 		slots = slots_parent.GetComponentsInChildren<SkillSlot>();
 	}
 
-    void Update()
-    {
+	void Update()
+	{
 		CheatGetSkill();
 
 	}

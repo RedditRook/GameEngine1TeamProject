@@ -21,9 +21,9 @@ public class CharacterParams : MonoBehaviour
 
 	// Start is called before the first frame update
 	void Start()
-    {
+	{
 		InitParams();
-    }
+	}
 
 	public virtual void InitParams()
 	{
@@ -45,7 +45,7 @@ public class CharacterParams : MonoBehaviour
 	{
 		print(name + "s HP:" + curHp);
 
-		if(curHp <= 0)
+		if (curHp <= 0)
 		{
 			curHp = 0;
 			isDead = true;
@@ -54,7 +54,7 @@ public class CharacterParams : MonoBehaviour
 	}
 	// Update is called once per frame
 	void Update()
-    {
-        
-    }
+	{
+
+	}
 }

@@ -8,16 +8,16 @@ public class NavAgent : MonoBehaviour
 	public bool is_chase;
 	NavMeshAgent nav;
 
-    void Start()
-    {
+	void Start()
+	{
 		nav = GetComponent<NavMeshAgent>();
-    }
+	}
 
-    void Update()
-    {
-        if(is_chase)
+	void Update()
+	{
+		if (is_chase)
 		{
 			nav.SetDestination(target.position);
 		}
-    }
+	}
 }

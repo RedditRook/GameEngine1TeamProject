@@ -30,7 +30,7 @@ public class InputManager : MonoBehaviour
 
 					player.GetComponent<PlayerFSM>().MoveTo(hit.point);
 				}
-				else if(hit.collider.gameObject.tag == "Enemy")
+				else if (hit.collider.gameObject.tag == "Enemy")
 				{
 					player.GetComponent<PlayerFSM>().AttackEnemy(hit.collider.gameObject);
 				}
@@ -79,8 +79,8 @@ public class InputManager : MonoBehaviour
 
 	// Update is called once per frame
 	void Update()
-    {
+	{
 		MouseCheck();
 		KeyboardCheck();
-    }
+	}
 }

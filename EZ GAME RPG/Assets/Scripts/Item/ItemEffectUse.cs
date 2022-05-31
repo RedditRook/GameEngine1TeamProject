@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemEffect     //¾ÆÀÌÅÛ È¿°úÀúÀå¿ë Å¬·¡½º
+public class ItemEffect     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
 {
-    public string name;     //¾ÆÀÌÅÛ ÀÌ¸§(Å°)
-    public string[] part;   //Ã¼·Â, ¸¶³ª ¾îµð¿¡? HP, MP, Damage, 
-    public int[] num;       //¾ó¸¶³ª ÀÛ¿ëÀ»?
+	public string name;     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½(Å°)
+	public string[] part;   //Ã¼ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½? HP, MP, Damage, 
+	public int[] num;       //ï¿½ó¸¶³ï¿½ ï¿½Û¿ï¿½ï¿½ï¿½?
 }
 
-public class ItemEffectUse : MonoBehaviour       //¾ÆÀÌÅÛÀÇ È¿°ú Àû¿ë
+public class ItemEffectUse : MonoBehaviour       //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 {
-    private ItemEffect[] item_effects; //¾ÆÀÌÅÛº° È¿°ú ÀúÀå¿ë ¹è¿­
+	private ItemEffect[] item_effects; //ï¿½ï¿½ï¿½ï¿½ï¿½Ûºï¿½ È¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­
 
-    private const string HP = "HP", MP = "MP";
+	private const string HP = "HP", MP = "MP";
 
-    public void UseItem(Item item)
-    {
+	public void UseItem(Item item)
+	{
 
-    }
+	}
 }

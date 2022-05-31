@@ -11,14 +11,14 @@ public class CameraControl : MonoBehaviour
 
 	// Start is called before the first frame update
 	void Start()
-    {
+	{
 		offset = player.position - transform.position;
 	}
 
 	void LateUpdate()
-    {
+	{
 		transform.position = player.position - offset;
-    }
-    // Update is called once per frame
-   
+	}
+	// Update is called once per frame
+
 }

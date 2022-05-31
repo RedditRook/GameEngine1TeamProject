@@ -13,22 +13,22 @@ public class PlayerAni : MonoBehaviour
 	public const int ANI_DEAD = 4;
 
 	Animator anim;
-    
-    void Start()
-    {
+
+	void Start()
+	{
 		anim = GetComponent<Animator>();
-    }
+	}
 
 
 	public void ChangeAni(int aniNumber)
-    {
+	{
 		anim.SetInteger("aniName", aniNumber);
-    }
+	}
 
 
-    // Update is called once per frame
-    void Update()
-    {
-		
-    }
+	// Update is called once per frame
+	void Update()
+	{
+
+	}
 }

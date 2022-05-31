@@ -18,16 +18,10 @@ public abstract class BaseNPC : MonoBehaviour
 	}
 
 	// Start is called before the first frame update
-	public virtual void Start()
-	{
-		
-	}
+	public abstract void Start();
 
 	// Update is called once per frame
-	public virtual void Update()
-	{
-
-	}
+	public abstract void Update();
 
 	// 플레이어와 상호작용이 이뤄졌을 때 UI를 표시하는 함수
 	public abstract void ShowUI();

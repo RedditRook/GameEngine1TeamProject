@@ -29,6 +29,4 @@ public class PlayerParams : CharacterParams
 	{
 		base.UpdateAfterReceiveAttack();
 	}
-
-
 }

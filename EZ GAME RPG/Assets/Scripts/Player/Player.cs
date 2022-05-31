@@ -9,87 +9,51 @@ public class Player : MonoBehaviour
 	public bool skill3;
 	public bool skill4;
 
-	private float maxhp;
-    public float MaxHP
-    {
-        get
-        {
-            return maxhp;
-        }
-    }
+	private float max_hp;
+	public float MaxHP
+	{
+		get { return max_hp; }
+	}
 
-    private float maxmp;
-    public float MaxMP
-    {
-        get
-        {
-            return maxmp;
-        }
-    }
+	private float max_mp;
+	public float MaxMP
+	{
+		get { return max_mp; }
+	}
 
-    private float hp;
-    public float HP
-    {
-        get
-        {
-            return hp;
-        }
-        set
-        {
-            hp = value;
-        }
-    }
+	private float hp;
+	public float HP
+	{
+		get { return hp; }
+		set { hp = value; }
+	}
 
-    private float mp;
-    public float MP
-    {
-        get
-        {
-            return mp;
-        }
-        set
-        {
-            mp = value;
-        }
-    }
+	private float mp;
+	public float MP
+	{
+		get { return mp; }
+		set { mp = value; }
+	}
 
 	private int level;
 	public int Level
 	{
-		get
-		{
-			return level;
-		}
-		set
-		{
-			level = value;
-		}
+		get { return level; }
+		set { level = value; }
 	}
 
 	private int exp;
 	public int EXP
 	{
-		get
-		{
-			return exp;
-		}
-		set
-		{
-			exp = value;
-		}
+		get { return exp; }
+		set { exp = value; }
 	}
 
 	private int maxexp;
 	public int MaxEXP
 	{
-		get
-		{
-			return maxexp;
-		}
-		set
-		{
-			maxexp = value;
-		}
+		get { return maxexp; }
+		set { maxexp = value; }
 	}
 
 	private bool interacting_npc;
@@ -101,11 +65,13 @@ public class Player : MonoBehaviour
 
 	// Start is called before the first frame update
 	void Start()
-    {
-        maxhp = 100;
-        hp = 100;
-        maxmp = 100;
-        mp = 100;
+	{
+		max_hp = 100;
+		max_mp = 100;
+
+		hp = 100;
+		mp = 100;
+
 		level = 1;
 
 		//스킬 정보
@@ -115,11 +81,11 @@ public class Player : MonoBehaviour
 		skill4 = false;
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
+	// Update is called once per frame
+	void Update()
+	{
+
+	}
 
 	void SkillUnlock()
 	{
