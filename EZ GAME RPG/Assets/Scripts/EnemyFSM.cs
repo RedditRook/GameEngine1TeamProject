@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyFSM : MonoBehaviour
 {
-  public enum State
+	public enum State
 	{
 		Idle,     //정지
 		Chase,    //추적
@@ -12,12 +12,14 @@ public class EnemyFSM : MonoBehaviour
 		Dead,   //사망
 		NoState //아무
 	}
-
+	public int check;
 	public State current_state = State.Idle;
 
 	EnemyParams myParams;
 
 	EnemyAni myAni;
+	GoblinAni goani;
+	SkeletonAni skeani;
 
 	Transform player;
 
@@ -25,7 +27,7 @@ public class EnemyFSM : MonoBehaviour
 
 	float chase_distance = 30f;  // 추적 시작 거리
 	float attack_distance = 15f; // 공격 시작 범위
-	float re_chase_distance =  14.5f; // 추적 시작 거리
+	float re_chase_distance = 14.5f; // 추적 시작 거리
 
 	float rotAnglePerSec = 360f; //초당 회전 각도
 	float moveSpeed = 25f;    //몬스터 이동속도
@@ -35,15 +37,37 @@ public class EnemyFSM : MonoBehaviour
 
 
 	public ParticleSystem hitEffects;
-	 void Start()
-
+	void Start()
 	{
-		myAni = GetComponent<EnemyAni>();
+
+		if (check == 0)
+		{
+			myAni = GetComponent<EnemyAni>();
+		}
+		if (check == 1)
+		{
+			goani = GetComponent<GoblinAni>();
+		}
+		if (check == 2)
+		{
+			skeani = GetComponent<SkeletonAni>();
+		}
+
 		myParams = GetComponent<EnemyParams>();
 		myParams.deadEvent.AddListener(CallDeadEvent);
-		
-		ChangeState(State.Idle, EnemyAni.IDLE);
 
+		if (check == 0)
+		{
+			ChangeState(State.Idle, EnemyAni.IDLE);
+		}
+		if (check == 1)
+		{
+			ChangeState(State.Idle, GoblinAni.IDLE);
+		}
+		if (check == 2)
+		{
+			ChangeState(State.Idle, SkeletonAni.IDLE);
+		}
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 		playerParams = player.gameObject.GetComponent<PlayerParams>();
 
@@ -53,15 +77,24 @@ public class EnemyFSM : MonoBehaviour
 
 	public void AttackCal()
 	{
-		
-
 		int attackpower = playerParams.GetAttack();
 		myParams.SetEnemyAttack(attackpower);
 	}
 
 	void CallDeadEvent()
 	{
-		ChangeState(State.Dead, EnemyAni.DIE);
+		if (check == 0)
+		{
+			ChangeState(State.Dead, EnemyAni.DIE);
+		}
+		if (check == 1)
+		{
+			ChangeState(State.Dead, GoblinAni.DIE);
+		}
+		if (check == 2)
+		{
+			ChangeState(State.Dead, SkeletonAni.DIE);
+		}
 		player.gameObject.SendMessage("KILL");
 	}
 	public void ShowHitEffect()
@@ -70,7 +103,7 @@ public class EnemyFSM : MonoBehaviour
 	}
 	void UpdateState()
 	{
-		switch(current_state)
+		switch (current_state)
 		{
 			case State.Idle:
 				IdleState();
@@ -90,30 +123,64 @@ public class EnemyFSM : MonoBehaviour
 		}
 	}
 
-	public void ChangeState(State newstate,string aniname)
+	public void ChangeState(State newstate, string aniname)
 	{
-		if(current_state == newstate)
+		if (current_state == newstate)
 		{
 			return;
 		}
 
 		current_state = newstate;
-		myAni.ChangeAni(aniname);
+
+		if (check == 0)
+		{
+			myAni.ChangeAni(aniname);
+		}
+		if (check == 1)
+		{
+			goani.ChangeAni(aniname);
+		}
+		if (check == 2)
+		{
+			skeani.ChangeAni(aniname);
+		}
 	}
 
 	void IdleState()
 	{
-		if(GetDistanceFromPlayer()<chase_distance)
+		if (GetDistanceFromPlayer() < chase_distance)
 		{
-			ChangeState(State.Chase, EnemyAni.WALK);
+			if (check == 0)
+			{
+				ChangeState(State.Chase, EnemyAni.WALK);
+			}
+			if (check == 1)
+			{
+				ChangeState(State.Chase, GoblinAni.WALK);
+			}
+			if (check == 2)
+			{
+				ChangeState(State.Chase, SkeletonAni.WALK);
+			}
 		}
 	}
 
 	void ChaseState()
 	{
-		if(GetDistanceFromPlayer()<attack_distance)
+		if (GetDistanceFromPlayer() < attack_distance)
 		{
-			ChangeState(State.Attack, EnemyAni.ATTACK);
+			if (check == 0)
+			{
+				ChangeState(State.Attack, EnemyAni.ATTACK);
+			}
+			if (check == 1)
+			{
+				ChangeState(State.Attack, GoblinAni.ATTACK);
+			}
+			if (check == 2)
+			{
+				ChangeState(State.Attack, SkeletonAni.ATTACK);
+			}
 		}
 		else
 		{
@@ -124,21 +191,41 @@ public class EnemyFSM : MonoBehaviour
 
 	void AttackState()
 	{
-		if(GetDistanceFromPlayer()>re_chase_distance)
+		if (GetDistanceFromPlayer() > re_chase_distance)
 		{
 			attackTimer = 0f;
-			ChangeState(State.Chase, EnemyAni.WALK);
+			if (check == 0)
+			{
+				ChangeState(State.Chase, EnemyAni.WALK);
+			}
+			if (check == 1)
+			{
+				ChangeState(State.Chase, GoblinAni.WALK);
+			}
+			if (check == 2)
+			{
+				ChangeState(State.Chase, SkeletonAni.WALK);
+			}
 		}
 		else
 		{
-			if(attackTimer >attackDelay)
+			if (attackTimer > attackDelay)
 			{
 				transform.LookAt(player.position);
-				myAni.ChangeAni(EnemyAni.ATTACK);
-
+				if (check == 0)
+				{
+					myAni.ChangeAni(EnemyAni.ATTACK);
+				}
+				if (check == 1)
+				{
+					goani.ChangeAni(GoblinAni.ATTACK);
+				}
+				if (check == 2)
+				{
+					skeani.ChangeAni(SkeletonAni.ATTACK);
+				}
 				attackTimer = 0f;
 			}
-
 			attackTimer += Time.deltaTime;
 		}
 	}
@@ -172,6 +259,6 @@ public class EnemyFSM : MonoBehaviour
 
 	void Update()
 	{
-		UpdateState();	
+		UpdateState();
 	}
 }

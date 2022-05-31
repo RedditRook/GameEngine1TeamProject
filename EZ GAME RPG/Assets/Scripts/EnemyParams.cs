@@ -1,31 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyParams : CharacterParams
 {
 	public string name;
+	public int hp;
+	public int atk;
+	public int def;
+	public int dg;
 	public int exp { get; set; }
 	public int DropGold { get; set; }
-
+	public Image hpbar;
 	public override void InitParams()
 	{
-		name = "Spider";
-		maxHp = 200;
+		maxHp = hp;
 		curHp = maxHp;
-		attack = 50;
-		defense = 5;
-		DropGold = 20;
+		attack = atk;
+		defense = def;
+		DropGold = dg;
 
 		exp = 50;
-
+		
 		isDead = false;
+		initHPBarsize();
 	}
-	// Start is called before the first frame update
+
+	void initHPBarsize()
+	{
+		hpbar.rectTransform.localScale =new Vector3(1f, 1f, 1f);
+	}
 
 	protected override void UpdateAfterReceiveAttack()
 	{
 		base.UpdateAfterReceiveAttack();
+		hpbar.rectTransform.localScale = new Vector3((float)curHp / (float)maxHp, 1f, 1f);
 	}
 
 }

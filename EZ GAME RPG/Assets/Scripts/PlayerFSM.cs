@@ -37,8 +37,6 @@ public class PlayerFSM : MonoBehaviour
 
 	EnemyParams curEnemyParams;
 
-	
-
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -79,6 +77,7 @@ public class PlayerFSM : MonoBehaviour
 		}
 
 		curEnemyParams = enemy.GetComponent<EnemyParams>();
+
 		if (curEnemyParams.isDead == false)
 		{
 
@@ -87,7 +86,6 @@ public class PlayerFSM : MonoBehaviour
 
 			ChangeState(STATE.WALK, PlayerAni.ANI_WALK);
 		}
-
 		else
 		{
 			curEnemyParams = null;
