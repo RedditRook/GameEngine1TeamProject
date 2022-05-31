@@ -1,18 +1,18 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 public class Inventory : MonoBehaviour
 {
-	public static bool invectoryActivated = false;  // �κ��丮 ���� ����
+	public static bool invectoryActivated = false;  // 인벤토리 열림 닫힘
 
 	[SerializeField]
-	private GameObject inventory_image; // Inventory_Base �̹���
+	private GameObject inventory_image; // Inventory_Base 이미지
 	[SerializeField]
 	private GameObject slots_parent;    // Inventory Grid
 
-	private InventorySlot[] slots;  // ���Ե� �迭
+	private InventorySlot[] slots;  // 슬롯들 배열
 
 	public Item for_test;
 
@@ -64,13 +64,11 @@ public class Inventory : MonoBehaviour
 					{
 						if (slots[i].item_count <= 0 && _count < 0)
 						{
-							Debug.Log("�ټ� ����");
 							return;
 						}
 						else
 						{
 							slots[i].SetSlotCount(_count);
-							Debug.Log(slots[i].item_count);
 						}
 						return;
 					}
@@ -84,7 +82,6 @@ public class Inventory : MonoBehaviour
 			{
 				if (_count < 0)
 				{
-					Debug.Log("�ټ� ����");
 					return;
 				}
 				else
@@ -99,7 +96,6 @@ public class Inventory : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.L))
 		{
 			GetItem(for_test, 1);
-			Debug.Log("���� �߰�");
 		}
 	}
 	public void CheatGetLeatherLow()
@@ -107,7 +103,6 @@ public class Inventory : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.K))
 		{
 			GetItem(for_test, -1);
-			Debug.Log("���� ����");
 		}
 	}
 }
