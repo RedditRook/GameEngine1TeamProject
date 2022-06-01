@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Spider
-  hp: 20
+  hp: 40
   atk: 10
   def: 10
   dg: 30

@@ -34,6 +34,7 @@ public class EnemyParams : CharacterParams
 
 	protected override void UpdateAfterReceiveAttack()
 	{
+		//Debug.Log("asdasfgagasfasfas");
 		base.UpdateAfterReceiveAttack();
 		hpbar.rectTransform.localScale = new Vector3((float)curHp / (float)maxHp, 1f, 1f);
 	}

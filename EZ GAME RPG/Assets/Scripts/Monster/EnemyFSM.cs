@@ -16,11 +16,12 @@ public class EnemyFSM : MonoBehaviour
 	public State current_state = State.Idle;
 
 	EnemyParams myParams;
+	PlayerParams playerparam;
+	GameObject curEnemy;
 
 	EnemyAni myAni;
 	GoblinAni goani;
 	SkeletonAni skeani;
-
 
 	Transform player;
 
@@ -35,6 +36,8 @@ public class EnemyFSM : MonoBehaviour
 
 	float attackDelay = 2f;
 	float attackTimer = 0f;
+
+	Vector3 curTargetPos;
 
 
 	public ParticleSystem hitEffects;
@@ -62,6 +65,7 @@ public class EnemyFSM : MonoBehaviour
 		}
 
 		myParams = GetComponent<EnemyParams>();
+		myParams.InitParams();
 		myParams.deadEvent.AddListener(CallDeadEvent);
 
 		if (check == 0)
@@ -100,12 +104,17 @@ public class EnemyFSM : MonoBehaviour
 	{
 		selectmark.SetActive(true);
 	}
-	public void AttackCal()
+	public void AttackCall()
 	{
-		int attackpower = playerParams.GetAttack();
-		myParams.SetEnemyAttack(attackpower);
+		
+		
+		int attackpower = myParams.GetAttack();
+		Debug.Log(attackpower);
+		playerparam.SetEnemyAttack(attackpower);
+		//playerParams.SetEnemyAttack(myParams.get_random_attack());
 	}
 
+	
 	public void setspawnobj(GameObject respawnobj,int spawnid,Vector3 originpos)
 	{
 		myrespawnobj = respawnobj;
@@ -244,6 +253,7 @@ public class EnemyFSM : MonoBehaviour
 
 	void AttackState()
 	{
+		AttackCall();
 		if (GetDistanceFromPlayer() > re_chase_distance)
 		{
 			attackTimer = 0f;

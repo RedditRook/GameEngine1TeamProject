@@ -12,6 +12,7 @@ public class AniEventControl : MonoBehaviour
 
 	public void SendAttackEnemy()
 	{
+
 		transform.parent.gameObject.SendMessage("AttackCal");
 	}
 

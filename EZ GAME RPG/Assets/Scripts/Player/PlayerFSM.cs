@@ -159,6 +159,7 @@ public class PlayerFSM : MonoBehaviour
 
 	}
 
+
 	public void MoveTo(Vector3 tPos)
 	{
 		if (currentState == STATE.Dead)

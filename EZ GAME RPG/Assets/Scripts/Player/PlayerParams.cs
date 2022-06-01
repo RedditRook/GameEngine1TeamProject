@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerParams : CharacterParams
 {
+	
+	public int hp;
+	public int atk;
+	public int def;
+	public int dg;
 	public string name { get; set; }
 	public int curexp { get; set; }
 	public int expToLevelUp { get; set; }
@@ -27,6 +32,7 @@ public class PlayerParams : CharacterParams
 
 	protected override void UpdateAfterReceiveAttack()
 	{
+		Debug.Log("Player");
 		base.UpdateAfterReceiveAttack();
 	}
 }

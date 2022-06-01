@@ -16,6 +16,9 @@ public class CharacterParams : MonoBehaviour
 
 	public bool isDead { get; set; }
 
+	public int attackmin { get; set; }
+	public int attackmax { get; set; }
+
 	[System.NonSerialized]
 	public UnityEvent deadEvent = new UnityEvent();
 
@@ -35,6 +38,13 @@ public class CharacterParams : MonoBehaviour
 		int at = attack;
 		return at;
 	}
+
+	public int get_random_attack()
+	{
+		int randattack = Random.Range(attackmin, attackmax + 1);
+		return randattack; 
+	}
+
 	public void SetEnemyAttack(int enemyAttackPower)
 	{
 		curHp -= enemyAttackPower;
@@ -43,6 +53,7 @@ public class CharacterParams : MonoBehaviour
 
 	protected virtual void UpdateAfterReceiveAttack()
 	{
+		Debug.Log(name);
 		print(name + "s HP:" + curHp);
 
 		if (curHp <= 0)
@@ -52,6 +63,7 @@ public class CharacterParams : MonoBehaviour
 			deadEvent.Invoke();
 		}
 	}
+
 	// Update is called once per frame
 	void Update()
 	{
