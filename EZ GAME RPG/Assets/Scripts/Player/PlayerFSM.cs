@@ -50,11 +50,11 @@ public class PlayerFSM : MonoBehaviour
 
 	public void AttackCal()
 	{
-		if (curEnemy == null)
-		{
-			return;
-		}
-
+		//if (curEnemy == null)
+		//{
+		//	return;
+		//}
+		
 		curEnemy.GetComponent<EnemyFSM>().ShowHitEffect();
 
 		int attackpower = myParams.GetAttack();
@@ -153,6 +153,7 @@ public class PlayerFSM : MonoBehaviour
 	{
 
 	}
+
 
 	public void MoveTo(Vector3 tPos)
 	{
