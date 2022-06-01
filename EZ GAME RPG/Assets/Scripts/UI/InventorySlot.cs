@@ -54,6 +54,6 @@ public class InventorySlot : MonoBehaviour		//인벤토리 슬롯에
 		item_image.sprite = null;
 		SetColor(0);
 
-		text_Count.text = "0";
+		text_Count.text = "\0";
 	}
 }
