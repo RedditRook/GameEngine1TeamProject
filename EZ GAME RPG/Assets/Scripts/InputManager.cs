@@ -54,7 +54,16 @@ public class InputManager : MonoBehaviour
 
 					player.GetComponent<PlayerFSM>().MoveTo(hit.point);
 				}
-				else if (hit.collider.gameObject.tag == "Enemy")
+			}
+		}
+		if(Input.GetMouseButtonDown(0))
+		{
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+			RaycastHit hit;
+			if (Physics.Raycast(ray, out hit))
+			{
+				if (hit.collider.gameObject.tag == "Enemy")
 				{
 					player.GetComponent<PlayerFSM>().AttackEnemy(hit.collider.gameObject);
 				}
