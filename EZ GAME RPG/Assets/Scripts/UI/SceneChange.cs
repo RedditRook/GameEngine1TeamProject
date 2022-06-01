@@ -14,6 +14,8 @@ public class SceneChange : MonoBehaviour
 	private float waitingtime;
 	private float fadeinalpha;
 
+	AudioSource bgm;
+
 	void Start()
 	{
 		timer = 0.0f;
@@ -22,6 +24,7 @@ public class SceneChange : MonoBehaviour
 		scenechangecheck = false;
 		sceneopencheck = true;
 		fadein.GetComponent<Image>().color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
+		bgm = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -53,5 +56,6 @@ public class SceneChange : MonoBehaviour
 		fadein.SetActive(true);
 		scenechangecheck = true;
 		timer = 0;
+		bgm.Play(0);
 	}
 }

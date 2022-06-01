@@ -31,6 +31,8 @@ public class PlayerFSM : MonoBehaviour
 	PlayerAni myAni;
 	PlayerParams myParams;
 	EnemyParams curEnemyParams;
+	
+	AudioSource sword;
 
 	Inventory inv;
 	public Item item;
@@ -44,6 +46,7 @@ public class PlayerFSM : MonoBehaviour
 		myParams = GetComponent<PlayerParams>();
 		myParams.InitParams();
 		myParams.deadEvent.AddListener(ChangeToPlayerDead);
+		sword = GetComponent<AudioSource>();
 
 		ChangeState(STATE.IDLE, PlayerAni.ANI_IDLE);
 		inv = transform.Find("Inventory Controller").GetComponent<Inventory>();
@@ -69,6 +72,7 @@ public class PlayerFSM : MonoBehaviour
 		curEnemy.GetComponent<EnemyFSM>().ShowHitEffect();
 
 		int attackpower = myParams.GetAttack();
+		sword.Play(0);
 
 		curEnemyParams.SetEnemyAttack(attackpower);
 	}
