@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class EnemyParams : CharacterParams
 {
-	Inventory inv;
-
 	public string name;
 	public int hp;
 	public int atk;
@@ -36,7 +34,6 @@ public class EnemyParams : CharacterParams
 
 	protected override void UpdateAfterReceiveAttack()
 	{
-		//Debug.Log("asdasfgagasfasfas");
 		base.UpdateAfterReceiveAttack();
 		hpbar.rectTransform.localScale = new Vector3((float)curHp / (float)maxHp, 1f, 1f);
 	}

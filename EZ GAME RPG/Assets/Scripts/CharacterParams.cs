@@ -47,14 +47,15 @@ public class CharacterParams : MonoBehaviour
 
 	public void SetEnemyAttack(int enemyAttackPower)
 	{
+		Debug.Log(name);
 		curHp -= enemyAttackPower;
 		UpdateAfterReceiveAttack();
 	}
 
 	protected virtual void UpdateAfterReceiveAttack()
 	{
-		Debug.Log(name);
-		print(name + "s HP:" + curHp);
+		//Debug.Log(name);
+		//print(name + "s HP:" + curHp);
 
 		if (curHp <= 0)
 		{
