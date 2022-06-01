@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerFSM : MonoBehaviour
 {
@@ -10,8 +11,12 @@ public class PlayerFSM : MonoBehaviour
 		WALK,
 		Attack,
 		AttackWait,
-		Dead
+		Dead,
+		Attack2,
+		Attack3,
+		Roll
 	}
+	
 
 	public STATE currentState = STATE.IDLE;
 	Vector3 curTargetPos;
@@ -28,14 +33,13 @@ public class PlayerFSM : MonoBehaviour
 	PlayerAni myAni;
 	PlayerParams myParams;
 	EnemyParams curEnemyParams;
+	public BossControll bossControll;
 
-	// Start is called before the first frame update
-	void Start()
+    // Start is called before the first frame update
+    void Start()
 	{
-
 		myAni = GetComponent<PlayerAni>();
 		// myAni.ChangeAni(PlayerAni.ANI_WALK)
-
 		myParams = GetComponent<PlayerParams>();
 		myParams.InitParams();
 		myParams.deadEvent.AddListener(ChangeToPlayerDead);
@@ -85,7 +89,7 @@ public class PlayerFSM : MonoBehaviour
 			curEnemyParams = null;
 		}
 	}
-	void ChangeState(STATE newState, int aniNumber)
+	public void ChangeState(STATE newState, int aniNumber)
 	{
 		if (currentState == newState)
 		{
@@ -98,6 +102,8 @@ public class PlayerFSM : MonoBehaviour
 
 	void UpdateState()
 	{
+
+		Debug.Log(currentState);
 		switch (currentState)
 		{
 			case STATE.IDLE:
@@ -115,11 +121,34 @@ public class PlayerFSM : MonoBehaviour
 			case STATE.Dead:
 				DeadState();
 				break;
+			case STATE.Attack2:
+				AttackSkill2();
+				break;
+			case STATE.Attack3:
+				AttackSkill3();
+				break;
+			case STATE.Roll:
+				Roll();
+				break;
 			default:
 				break;
 		}
 	}
 
+	void Roll()
+	{
+
+	}
+	void AttackSkill2()
+	{
+		Debug.Log("aaaaa");
+		//ChangeState(STATE.IDLE, PlayerAni.ANI_IDLE);
+	}
+
+	void AttackSkill3()
+	{
+		//ChangeState(STATE.IDLE, PlayerAni.ANI_IDLE);
+	}
 	void IdleState()
 	{
 
@@ -136,7 +165,7 @@ public class PlayerFSM : MonoBehaviour
 		attackTimer = 0.0f;
 		transform.LookAt(curTargetPos);
 
-		ChangeState(STATE.AttackWait, PlayerAni.ANI_ATKIDLE);
+		//ChangeState(STATE.AttackWait, PlayerAni.ANI_ATKIDLE);
 	}
 
 	void AttackWaitState()

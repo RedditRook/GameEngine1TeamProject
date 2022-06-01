@@ -31,7 +31,7 @@ public class InputManager : MonoBehaviour
 	//업데이트
 	void Start()
 	{
-		player = GameObject.Find("Player");
+		player = GameObject.FindWithTag("Player");
 		inventory = GameObject.Find("Inventory Controller").GetComponent<Inventory>();
 		interact_npc = GameObject.FindGameObjectWithTag("NPC").transform.GetChild(0).GetComponent<NPC>();
 	}
@@ -154,20 +154,21 @@ public class InputManager : MonoBehaviour
 	private void Skill1()
 	{
 		// TODO: 스킬 발동
+		Debug.Log("Q스킬 사용11");
+		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Attack, 2);
 	}
 
 	private void Skill2()
 	{
-
+		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Attack2, 5);
 	}
 	
 	private void Skill3()
 	{
-
+		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Attack3, 6);
 	}
-
 	private void Skill4()
 	{
-		
+		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Roll, 7);
 	}
 }
