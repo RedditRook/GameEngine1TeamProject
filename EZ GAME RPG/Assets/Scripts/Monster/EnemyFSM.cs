@@ -243,6 +243,10 @@ public class EnemyFSM : MonoBehaviour
 	void TurnToDestination()
 	{
 		Quaternion lookRotation = Quaternion.LookRotation(player.position - transform.position);
+		if(check==2)
+		{
+			rotAnglePerSec = 180f;
+		}
 		transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, Time.deltaTime * rotAnglePerSec);
 	}
 
