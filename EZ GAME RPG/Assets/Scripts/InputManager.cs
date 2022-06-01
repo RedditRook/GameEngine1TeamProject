@@ -40,6 +40,7 @@ public class InputManager : MonoBehaviour
 
 	void MouseCheck()
 	{
+		// 우클릭
 		if (Input.GetMouseButtonDown(1))
 		{
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -56,6 +57,7 @@ public class InputManager : MonoBehaviour
 				}
 			}
 		}
+		// 좌클릭
 		if(Input.GetMouseButtonDown(0))
 		{
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

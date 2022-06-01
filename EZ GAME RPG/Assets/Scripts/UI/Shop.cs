@@ -16,13 +16,16 @@ public class Shop : MonoBehaviour
 	[SerializeField]
 	private ShopSlot[] slots;  // 슬롯들 배열
 
-	public Item for_test;
-
 	void Start()
 	{
 		shop_opened = false;
 
 		shop_image.SetActive(false);
+
+		for (int i = 0; i < slots.Length; i++)
+		{
+			slots[i].inventory = inventory;
+		}
 	}
 
 	void Update()

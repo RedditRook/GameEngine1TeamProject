@@ -110,10 +110,30 @@ public class Inventory : MonoBehaviour
 		return true;
 	}
 	
-	public void GetMoney(int _gold)
+	public void GetGold(int _gold)
 	{
 		gold += _gold;
 		gold_text.text = "Gold: " + gold.ToString();
+	}
+
+	public int SlotSize()
+	{
+		return slots.Length;
+	}
+
+	public bool IsFilled(int i)
+	{
+		return slots[i].item;
+	}
+
+	public bool HaveConsumableItem(int i, Item _item)
+	{
+		if (slots[i].item == _item && slots[i].item.item_type == Item.ITEMTYPE.consumable)
+		{
+			return true;
+		}
+
+		return false;
 	}
 
 	public void CheatGetLeather()
@@ -121,7 +141,7 @@ public class Inventory : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.L))
 		{
 			GetItem(for_test, 1);
-			GetMoney(100);
+			GetGold(100);
 		}
 	}
 	public void CheatGetLeatherLow()
