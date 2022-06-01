@@ -3200,7 +3200,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1598293623}
   distance: 100
-  focusRadius: 10
+  focusRadius: 3
+  focusCentering: 0.5
+  rotationSpeed: 90
+  minVerticalAngle: -30
+  maxVerticalAngle: 60
+  alignDelay: 5
+  alignSmoothRange: 45
+  playerInputSpace: {fileID: 0}
 --- !u!1 &968303669
 GameObject:
   m_ObjectHideFlags: 0
@@ -4400,6 +4407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2353b3f9a238f6438ac1d0bd605be3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInputSpace: {fileID: 0}
   currentState: 0
   rotAnglePerSecond: 360
   moveSpeed: 60
