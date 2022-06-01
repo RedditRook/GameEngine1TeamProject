@@ -130,21 +130,21 @@ public class EnemyFSM : MonoBehaviour
 	{
 		if (check == 0)
 		{
-			inv.GetMoney(100);
+			inv.GetGold(100);
 			inv.GetItem(item);
 			ChangeState(State.Dead, EnemyAni.DIE);
 			StartCoroutine(removemefromworld());
 		}
 		if (check == 1)
 		{
-			inv.GetMoney(200);
+			inv.GetGold(200);
 			inv.GetItem(item);
 			ChangeState(State.Dead, GoblinAni.DIE);
 			StartCoroutine(removemefromworld());
 		}
 		if (check == 2)
 		{
-			inv.GetMoney(300);
+			inv.GetGold(300);
 			inv.GetItem(item);
 			ChangeState(State.Dead, SkeletonAni.DIE);
 			StartCoroutine(removemefromworld());
