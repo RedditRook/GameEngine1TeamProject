@@ -53,8 +53,6 @@ public class EnemyFSM : MonoBehaviour
 
 	public void AttackCal()
 	{
-		
-
 		int attackpower = playerParams.GetAttack();
 		myParams.SetEnemyAttack(attackpower);
 	}
