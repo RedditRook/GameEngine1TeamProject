@@ -22,7 +22,7 @@ public class Merchant : NPC
 	public override void ShowUI()
 	{
 		text.PrintName(name);
-		text.PrintText("아타라스 상회에 오신 것을 환영합니다.\n")
+		text.PrintText("아타라스 상회에 오신 것을 환영합니다.\n");
 		text.PrintText("찾으시는 물건이 있으신가요?");
 		shop.TryOpenShop();
 		text.ShowBox();
