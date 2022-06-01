@@ -77,6 +77,7 @@ public class PlayerFSM : MonoBehaviour
 			curEnemy = enemy;
 			curTargetPos = curEnemy.transform.position;
 
+			GameManager.instance.changecurrenttarget(curEnemy);
 			ChangeState(STATE.WALK, PlayerAni.ANI_WALK);
 		}
 		else
