@@ -5,11 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-<<<<<<< HEAD
-  - NPC
-=======
   - BossAttack
->>>>>>> Eunwoo
+  - NPC
+  - terrain
   layers:
   - Default
   - TransparentFX

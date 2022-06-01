@@ -106,10 +106,7 @@ public class EnemyFSM : MonoBehaviour
 	}
 	public void AttackCall()
 	{
-		
-		
 		int attackpower = myParams.GetAttack();
-		Debug.Log(attackpower);
 		playerparam.SetEnemyAttack(attackpower);
 		//playerParams.SetEnemyAttack(myParams.get_random_attack());
 	}

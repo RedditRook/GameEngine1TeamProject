@@ -58,8 +58,11 @@ public class PlayerFSM : MonoBehaviour
 			return;
 		}
 
-		Debug.Log("asd");
-
+		
+		if (curEnemy == null)
+		{
+			return;
+		}
 		curEnemy.GetComponent<EnemyFSM>().ShowHitEffect();
 
 		int attackpower = myParams.GetAttack();
