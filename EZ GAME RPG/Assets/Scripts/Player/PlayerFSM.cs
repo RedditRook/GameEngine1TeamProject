@@ -32,10 +32,12 @@ public class PlayerFSM : MonoBehaviour
 	PlayerParams myParams;
 	EnemyParams curEnemyParams;
 
+	Inventory inv;
+	public Item item;
+
 	// Start is called before the first frame update
 	void Start()
 	{
-
 		myAni = GetComponent<PlayerAni>();
 		// myAni.ChangeAni(PlayerAni.ANI_WALK)
 
@@ -44,6 +46,7 @@ public class PlayerFSM : MonoBehaviour
 		myParams.deadEvent.AddListener(ChangeToPlayerDead);
 
 		ChangeState(STATE.IDLE, PlayerAni.ANI_IDLE);
+		inv = transform.Find("Inventory Controller").GetComponent<Inventory>();
 	}
 
 	public void ChangeToPlayerDead()
@@ -90,6 +93,7 @@ public class PlayerFSM : MonoBehaviour
 		}
 		else
 		{
+			inv.GetItem(item, 1);
 			curEnemyParams = null;
 		}
 	}
@@ -161,7 +165,6 @@ public class PlayerFSM : MonoBehaviour
 	{
 
 	}
-
 
 	public void MoveTo(Vector3 tPos)
 	{

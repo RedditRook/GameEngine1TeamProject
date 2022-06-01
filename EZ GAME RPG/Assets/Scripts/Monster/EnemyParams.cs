@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class EnemyParams : CharacterParams
 {
+	Inventory inv;
+
 	public string name;
 	public int hp;
 	public int atk;

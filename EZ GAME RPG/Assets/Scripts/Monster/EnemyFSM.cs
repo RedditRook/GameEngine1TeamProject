@@ -19,6 +19,9 @@ public class EnemyFSM : MonoBehaviour
 	PlayerParams playerparam;
 	GameObject curEnemy;
 
+	Inventory inv;
+	public Item item;
+
 	EnemyAni myAni;
 	GoblinAni goani;
 	SkeletonAni skeani;
@@ -47,7 +50,7 @@ public class EnemyFSM : MonoBehaviour
 	public int spawnid { get; set; }
 
 	Vector3 originpos;
-	
+
 	void Start()
 	{
 
@@ -85,6 +88,11 @@ public class EnemyFSM : MonoBehaviour
 		playerParams = player.gameObject.GetComponent<PlayerParams>();
 
 		hitEffects.Stop();
+		inv = GameObject.Find("Inventory Controller").GetComponent<Inventory>();
+		if(inv == null)
+		{
+			Debug.Log("asdfasdfasdf");
+		}
 	}
 
 	public void addtoworldagain()
@@ -108,11 +116,10 @@ public class EnemyFSM : MonoBehaviour
 	{
 		int attackpower = myParams.GetAttack();
 		playerparam.SetEnemyAttack(attackpower);
-		//playerParams.SetEnemyAttack(myParams.get_random_attack());
 	}
 
-	
-	public void setspawnobj(GameObject respawnobj,int spawnid,Vector3 originpos)
+
+	public void setspawnobj(GameObject respawnobj, int spawnid, Vector3 originpos)
 	{
 		myrespawnobj = respawnobj;
 		this.spawnid = spawnid;
@@ -123,25 +130,33 @@ public class EnemyFSM : MonoBehaviour
 	{
 		if (check == 0)
 		{
+			inv.GetMoney(100);
+			inv.GetItem(item);
 			ChangeState(State.Dead, EnemyAni.DIE);
+			StartCoroutine(removemefromworld());
 		}
 		if (check == 1)
 		{
+			inv.GetMoney(200);
+			inv.GetItem(item);
 			ChangeState(State.Dead, GoblinAni.DIE);
+			StartCoroutine(removemefromworld());
 		}
 		if (check == 2)
 		{
+			inv.GetMoney(300);
+			inv.GetItem(item);
 			ChangeState(State.Dead, SkeletonAni.DIE);
+			StartCoroutine(removemefromworld());
 		}
 		player.gameObject.SendMessage("KILL");
 
-		StartCoroutine(removemefromworld());
 	}
 	IEnumerator removemefromworld()
 	{
 		yield return new WaitForSeconds(1f);
-		
-		if(check ==0)
+
+		if (check == 0)
 		{
 			ChangeState(State.Idle, EnemyAni.IDLE);
 		}
