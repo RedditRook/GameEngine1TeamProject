@@ -7,7 +7,7 @@ using TMPro;
 public class TextBox : MonoBehaviour
 {
 	public GameObject conversation;
-	public TextMeshPro text;    //스킬 이름 출력 TMPtext
+	//public TextMeshPro text;    //스킬 이름 출력 TMPtext
 
 	[SerializeField]
 	private TextMeshProUGUI conversation_text;
@@ -27,21 +27,19 @@ public class TextBox : MonoBehaviour
     void Update()
     {
 		timer += Time.deltaTime;
+
 		if(timer >= waitingtime)
 		{
-			conversation.SetActive(false);
-		}
-		if(Input.GetKeyDown(KeyCode.J))
-		{
-			ShowBoxByTime(5);
+			//conversation.SetActive(false);
 		}
 	}
 
-	void PrintText(string ptext)
+	public void PrintText(string ptext)
 	{
 		conversation_text.text = ptext;
 	}
-	void PrintName(string ptext)
+
+	public void PrintName(string ptext)
 	{
 		name_text.text = ptext;
 	}
@@ -52,8 +50,14 @@ public class TextBox : MonoBehaviour
 		conversation.SetActive(true);
 		waitingtime = ftime;
 	}
-	void ShowBox()
+
+	public void ShowBox()
 	{
 		conversation.SetActive(true);
+	}
+
+	public void HideBox()
+	{
+		conversation.SetActive(false);
 	}
 }

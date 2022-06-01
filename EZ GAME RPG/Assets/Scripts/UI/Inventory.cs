@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Inventory : MonoBehaviour
 {
-	public static bool invectoryActivated = false;  // 인벤토리 열림 닫힘
+	static private bool inventoryActivated = false;  // 인벤토리 열림 닫힘
+	public bool OnActivated { get; }
 
 	[SerializeField]
 	private GameObject inventory_image; // Inventory_Base 이미지
@@ -24,22 +24,19 @@ public class Inventory : MonoBehaviour
 
 	void Update()
 	{
-		TryOpenInventory();
+		//TryOpenInventory();
 		CheatGetLeather();
 		CheatGetLeatherLow();
 	}
 
-	private void TryOpenInventory()
+	public void TryOpenInventory()
 	{
-		if (Input.GetKeyDown(KeyCode.I))
-		{
-			invectoryActivated = !invectoryActivated;
+		inventoryActivated = !inventoryActivated;
 
-			if (invectoryActivated)
-				OpenInventory();
-			else
-				CloseInventory();
-		}
+		if (inventoryActivated)
+			OpenInventory();
+		else
+			CloseInventory();
 	}
 
 	private void OpenInventory()

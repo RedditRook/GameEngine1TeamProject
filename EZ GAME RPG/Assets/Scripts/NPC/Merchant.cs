@@ -2,30 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Merchant : BaseNPC
+public class Merchant : NPC
 {
 	// Start is called before the first frame update
 	public override void Start()
 	{
 		// TODO: NPC 시작 포지션 지정
-		// position = new Vector
+		name = "아리엘";
 	}
 
 	// Update is called once per frame
 	public override void Update()
 	{
-
 	}
 
-	// UI 표시
 	public override void ShowUI()
 	{
-		// TODO: NPC와의 대화 텍스트 UI 객체에 전송
+		text.PrintName(name);
+		text.PrintText("현재 판매중인 상품 목록입니다.");
+		text.ShowBox();
 	}
 
-	// UI 종료(숨김)
 	public override void HideUI()
 	{
-
+		text.HideBox();
 	}
 }

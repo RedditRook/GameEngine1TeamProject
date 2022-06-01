@@ -1,17 +1,39 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-	GameObject player;
-	GameObject npc;
+	// 사용 키 모음
+	private Dictionary<KeyCode, Action> key_dictionary;
+
+	private GameObject player;
+	private NPC interact_npc;
+	private Inventory inventory;
+
+	private void Awake()
+	{
+		key_dictionary = new Dictionary<KeyCode, Action>
+		{
+			{ KeyCode.Space, StartInteraction },
+			{ KeyCode.Escape, EndInteraction },
+			{ KeyCode.I, ActInventory },
+			{ KeyCode.A, NormalAttack },
+			{ KeyCode.Q, Skill1 },
+			{ KeyCode.W, Skill2 },
+			{ KeyCode.E, Skill3 },
+			{ KeyCode.R, Skill4 },
+		};
+	}
 
 	// Start is called before the first frame update
 	//업데이트
 	void Start()
 	{
-		player = GameObject.FindGameObjectWithTag("Player");
+		player = GameObject.Find("Player");
+		inventory = GameObject.Find("Inventory Controller").GetComponent<Inventory>();
+		interact_npc = GameObject.FindGameObjectWithTag("NPC").transform.GetChild(0).GetComponent<NPC>();
 	}
 
 	void MouseCheck()
@@ -38,42 +60,17 @@ public class InputManager : MonoBehaviour
 		}
 	}
 
-
 	void KeyboardCheck()
 	{
-		// SPACE 키를 눌렀을 때 플레이어가 npc와 상호작용을 하지 않고 있을 때
-		if (Input.GetKeyDown(KeyCode.Space) && player.GetComponent<Player>().IsInteractingNPC == false)
+		if (Input.anyKeyDown)
 		{
-			float min_distance = 100.0f;
-
-			for (int i = 0; i < GameObject.FindGameObjectWithTag("NPC").transform.childCount; ++i)
+			foreach (var dic in key_dictionary)
 			{
-				// 월드 상에 존재하는 모든 NPC들을 검사(몬스터 NPC 제외)
-				GameObject near_npc = GameObject.FindGameObjectWithTag("NPC").transform.GetChild(i).gameObject;
-				// 플레이어와 NPC 사이의 거리를 검사
-				float distance = Vector3.Distance(player.transform.position, near_npc.transform.position);
-
-				// 해당 NPC와 플레이어 사이의 거리가 최단거리일 경우
-				if (min_distance > distance)
+				if (Input.GetKeyDown(dic.Key))
 				{
-					min_distance = distance;
-					npc = near_npc;
+					dic.Value();
 				}
 			}
-
-			// 해당 NPC와 플레이어 사이의 거리가 5 미만인 경우 상호작용 개시
-			if (min_distance < 5.0f)
-			{
-				player.GetComponent<Player>().IsInteractingNPC = true;
-				npc.SendMessage("ShowUI");
-			}
-		}
-
-		// ESC키를 눌렀을 때 플레이어가 NPC와 상호작용을 하고 있을 때 상호작용 종료
-		if (Input.GetKeyDown(KeyCode.Escape) && player.GetComponent<Player>().IsInteractingNPC == true)
-		{
-			player.GetComponent<Player>().IsInteractingNPC = false;
-			npc.SendMessage("HideUI");
 		}
 	}
 
@@ -82,5 +79,85 @@ public class InputManager : MonoBehaviour
 	{
 		MouseCheck();
 		KeyboardCheck();
+	}
+
+	// NPC와 상호작용 시작
+	private void StartInteraction()
+	{
+		// 플레이어가 npc와 상호작용을 하지 않고 있을 때
+		if (player.GetComponent<Player>().IsInteractingNPC == false)
+		{
+			var npc = GameObject.FindGameObjectWithTag("NPC").transform;
+			float min_distance = 100.0f;
+
+			for (int i = 0; i < npc.childCount; ++i)
+			{
+				// 월드 상에 존재하는 모든 NPC들을 검사(몬스터 NPC 제외)
+				// 플레이어와 NPC 사이의 거리를 검사
+				float distance = Vector3.Distance(player.transform.position, npc.GetChild(i).position);
+
+				// 해당 NPC와 플레이어 사이의 거리가 최단거리일 경우
+				if (min_distance > distance)
+				{
+					min_distance = distance;
+					interact_npc = npc.GetChild(i).GetComponent<NPC>();
+				}
+			}
+
+			// 해당 NPC와 플레이어 사이의 거리가 5 미만인 경우 상호작용 개시
+			if (min_distance < 5.0f)
+			{
+				player.GetComponent<Player>().IsInteractingNPC = true;
+				interact_npc.ShowUI();
+			}
+		}
+	}
+
+	// 상호작용 종료
+	private void EndInteraction()
+	{
+		// if else 구조를 이용하여 UI가 1개씩 닫히도록 한다
+		// 플레이어가 NPC와 상호작용을 하고 있을 때
+		if (player.GetComponent<Player>().IsInteractingNPC == true)
+		{
+			// 상호작용 종료
+			player.GetComponent<Player>().IsInteractingNPC = false;
+			interact_npc.HideUI();
+		}
+		// 인벤토리가 열려있으면 인벤토리를 닫는다
+		else if (inventory.OnActivated)
+		{
+			inventory.TryOpenInventory();
+		}
+	}
+
+	private void ActInventory()
+	{
+		inventory.TryOpenInventory();
+	}
+
+	private void NormalAttack()
+	{
+		// TODO: 평타
+	}
+
+	private void Skill1()
+	{
+		// TODO: 스킬 발동
+	}
+
+	private void Skill2()
+	{
+
+	}
+	
+	private void Skill3()
+	{
+
+	}
+
+	private void Skill4()
+	{
+		
 	}
 }
