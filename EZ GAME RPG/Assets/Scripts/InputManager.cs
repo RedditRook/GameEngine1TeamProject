@@ -144,6 +144,7 @@ public class InputManager : MonoBehaviour
 
 	private void NormalAttack()
 	{
+
 		// TODO: 평타
 	}
 

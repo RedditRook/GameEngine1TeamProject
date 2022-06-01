@@ -21,6 +21,7 @@ public class EnemyFSM : MonoBehaviour
 	GoblinAni goani;
 	SkeletonAni skeani;
 
+
 	Transform player;
 
 	PlayerParams playerParams;
@@ -37,6 +38,13 @@ public class EnemyFSM : MonoBehaviour
 
 
 	public ParticleSystem hitEffects;
+
+	public GameObject selectmark;
+	GameObject myrespawnobj;
+	public int spawnid { get; set; }
+
+	Vector3 originpos;
+	
 	void Start()
 	{
 
@@ -68,17 +76,41 @@ public class EnemyFSM : MonoBehaviour
 		{
 			ChangeState(State.Idle, SkeletonAni.IDLE);
 		}
+
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 		playerParams = player.gameObject.GetComponent<PlayerParams>();
 
 		hitEffects.Stop();
 	}
 
+	public void addtoworldagain()
+	{
+		transform.position = originpos;
+		GetComponent<EnemyParams>().InitParams();
+		GetComponent<BoxCollider>().enabled = true;
+	}
 
+
+	public void hideselection()
+	{
+		selectmark.SetActive(false);
+	}
+
+	public void showselection()
+	{
+		selectmark.SetActive(true);
+	}
 	public void AttackCal()
 	{
 		int attackpower = playerParams.GetAttack();
 		myParams.SetEnemyAttack(attackpower);
+	}
+
+	public void setspawnobj(GameObject respawnobj,int spawnid,Vector3 originpos)
+	{
+		myrespawnobj = respawnobj;
+		this.spawnid = spawnid;
+		this.originpos = originpos;
 	}
 
 	void CallDeadEvent()
@@ -96,6 +128,27 @@ public class EnemyFSM : MonoBehaviour
 			ChangeState(State.Dead, SkeletonAni.DIE);
 		}
 		player.gameObject.SendMessage("KILL");
+
+		StartCoroutine(removemefromworld());
+	}
+	IEnumerator removemefromworld()
+	{
+		yield return new WaitForSeconds(1f);
+		
+		if(check ==0)
+		{
+			ChangeState(State.Idle, EnemyAni.IDLE);
+		}
+		if (check == 1)
+		{
+			ChangeState(State.Idle, GoblinAni.IDLE);
+		}
+		if (check == 2)
+		{
+			ChangeState(State.Idle, SkeletonAni.IDLE);
+		}
+
+		myrespawnobj.GetComponent<RespawnObj>().removemonster(spawnid);
 	}
 	public void ShowHitEffect()
 	{

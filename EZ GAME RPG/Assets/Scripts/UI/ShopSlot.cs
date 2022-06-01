@@ -7,35 +7,24 @@ using TMPro;
 public class ShopSlot : MonoBehaviour		//인벤토리 슬롯에 
 {
 	public Item item;			//아이템 객체
-	public TextMeshPro text;	//아이템 이름 및 겟수 출력 TMPtext
-	public int item_count;		//아이템 겟수
+	public TextMeshProUGUI name;	//아이템 이름
+	public TextMeshProUGUI price;	//아이템 가격
 	public Image item_image;	//아이템 이미지
 
 	[SerializeField]
-	private TextMeshProUGUI text_Count;
+	private TextMeshProUGUI text;
+
+	private void Start()
+	{
+		name.text = item.name;
+		price.text = item.price.ToString();
+		item_image.sprite = item.item_image;
+	}
 
 	private void SetColor(float _alpha)		//아이템 투명도 조절(삭제시 알파0, 생성시 알파1)
 	{
 		Color color = item_image.color;
 		color.a = _alpha;
 		item_image.color = color;
-		item_count = 9;
-	}
-
-	public void AddItem(Item _item)	//슬롯에 아이템이 추가될 때
-	{
-		item = _item;
-		item_image.sprite = item.item_image;
-
-		if (item.item_type != Item.ITEMTYPE.equipment)
-		{
-			text_Count.text = item.name;
-		}
-		else
-		{
-			text_Count.text = " ";
-		}
-
-		SetColor(1);
 	}
 }

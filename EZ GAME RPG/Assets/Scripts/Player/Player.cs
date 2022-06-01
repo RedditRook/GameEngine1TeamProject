@@ -36,6 +36,14 @@ public class Player : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		max_hp = 100;
+		max_mp = 100;
+
+		hp = 100;
+		mp = 100;
+
+		level = 1;
+
 		MaxHP = max_hp;
 		MaxMP = max_mp;
 		MaxEXP = maxexp;
@@ -47,14 +55,6 @@ public class Player : MonoBehaviour
 
 		IsInteractingNPC = interacting_npc;
 
-		max_hp = 100;
-		max_mp = 100;
-
-		hp = 100;
-		mp = 100;
-
-		level = 1;
-
 		//스킬 정보
 		skill1 = false;
 		skill2 = false;
@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-
+		
 	}
 
 	void SkillUnlock()
