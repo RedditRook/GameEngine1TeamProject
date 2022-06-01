@@ -11,7 +11,6 @@ public class InputManager : MonoBehaviour
 	private GameObject player;
 	private NPC interact_npc;
 	private Inventory inventory;
-	private Shop shop;
 
 	private void Awake()
 	{
@@ -32,15 +31,13 @@ public class InputManager : MonoBehaviour
 	//업데이트
 	void Start()
 	{
-		player = GameObject.FindGameObjectWithTag("Player");
+		player = GameObject.FindWithTag("Player");
 		inventory = GameObject.Find("Inventory Controller").GetComponent<Inventory>();
 		interact_npc = GameObject.FindGameObjectWithTag("NPC").transform.GetChild(0).GetComponent<NPC>();
-		shop = GameObject.Find("ShopList").GetComponent<Shop>();
 	}
 
 	void MouseCheck()
 	{
-		// 우클릭
 		if (Input.GetMouseButtonDown(1))
 		{
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -49,14 +46,14 @@ public class InputManager : MonoBehaviour
 
 			if (Physics.Raycast(ray, out hit))
 			{
-				if (hit.collider.gameObject.tag == "terrain")
+				if (hit.collider.gameObject.name == "Plane003")
 				{
+					//player.transform.position = hit.point;
 
 					player.GetComponent<PlayerFSM>().MoveTo(hit.point);
 				}
 			}
 		}
-		// 좌클릭
 		if(Input.GetMouseButtonDown(0))
 		{
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -116,8 +113,8 @@ public class InputManager : MonoBehaviour
 				}
 			}
 
-			// 해당 NPC와 플레이어 사이의 거리가 10 미만인 경우 상호작용 개시
-			if (min_distance < 10.0f)
+			// 해당 NPC와 플레이어 사이의 거리가 5 미만인 경우 상호작용 개시
+			if (min_distance < 5.0f)
 			{
 				player.GetComponent<Player>().IsInteractingNPC = true;
 				interact_npc.ShowUI();
@@ -128,22 +125,18 @@ public class InputManager : MonoBehaviour
 	// 상호작용 종료
 	private void EndInteraction()
 	{
-		if (shop.OnOpened)
+		// if else 구조를 이용하여 UI가 1개씩 닫히도록 한다
+		// 플레이어가 NPC와 상호작용을 하고 있을 때
+		if (player.GetComponent<Player>().IsInteractingNPC == true)
 		{
-			shop.TryOpenShop();
+			// 상호작용 종료
+			player.GetComponent<Player>().IsInteractingNPC = false;
+			interact_npc.HideUI();
 		}
 		// 인벤토리가 열려있으면 인벤토리를 닫는다
 		else if (inventory.OnActivated)
 		{
 			inventory.TryOpenInventory();
-		}
-		// if else 구조를 이용하여 UI가 1개씩 닫히도록 한다
-		// 플레이어가 NPC와 상호작용을 하고 있을 때
-		else if (player.GetComponent<Player>().IsInteractingNPC == true)
-		{
-			// 상호작용 종료
-			player.GetComponent<Player>().IsInteractingNPC = false;
-			interact_npc.HideUI();
 		}
 	}
 
@@ -161,20 +154,21 @@ public class InputManager : MonoBehaviour
 	private void Skill1()
 	{
 		// TODO: 스킬 발동
+		Debug.Log("Q스킬 사용11");
+		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Attack, 2);
 	}
 
 	private void Skill2()
 	{
-
+		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Attack2, 5);
 	}
 	
 	private void Skill3()
 	{
-
+		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Attack3, 6);
 	}
-
 	private void Skill4()
 	{
-		
+		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Roll, 7);
 	}
 }

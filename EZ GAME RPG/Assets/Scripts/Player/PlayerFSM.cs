@@ -1,20 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerFSM : MonoBehaviour
 {
-	[SerializeField]
-	Transform playerInputSpace = default;
-
 	public enum STATE
 	{
 		IDLE,
 		WALK,
 		Attack,
 		AttackWait,
-		Dead
+		Dead,
+		Attack2,
+		Attack3,
+		Roll
 	}
+	
 
 	public STATE currentState = STATE.IDLE;
 	Vector3 curTargetPos;
@@ -31,25 +33,18 @@ public class PlayerFSM : MonoBehaviour
 	PlayerAni myAni;
 	PlayerParams myParams;
 	EnemyParams curEnemyParams;
-	
-	AudioSource sword;
+	public BossControll bossControll;
 
-	Inventory inv;
-	public Item item;
-
-	// Start is called before the first frame update
-	void Start()
+    // Start is called before the first frame update
+    void Start()
 	{
 		myAni = GetComponent<PlayerAni>();
 		// myAni.ChangeAni(PlayerAni.ANI_WALK)
-
 		myParams = GetComponent<PlayerParams>();
 		myParams.InitParams();
 		myParams.deadEvent.AddListener(ChangeToPlayerDead);
-		sword = GetComponent<AudioSource>();
 
 		ChangeState(STATE.IDLE, PlayerAni.ANI_IDLE);
-		inv = transform.Find("Inventory Controller").GetComponent<Inventory>();
 	}
 
 	public void ChangeToPlayerDead()
@@ -64,15 +59,9 @@ public class PlayerFSM : MonoBehaviour
 			return;
 		}
 
-		
-		if (curEnemy == null)
-		{
-			return;
-		}
 		curEnemy.GetComponent<EnemyFSM>().ShowHitEffect();
 
 		int attackpower = myParams.GetAttack();
-		sword.Play(0);
 
 		curEnemyParams.SetEnemyAttack(attackpower);
 	}
@@ -97,11 +86,10 @@ public class PlayerFSM : MonoBehaviour
 		}
 		else
 		{
-			inv.GetItem(item, 1);
 			curEnemyParams = null;
 		}
 	}
-	void ChangeState(STATE newState, int aniNumber)
+	public void ChangeState(STATE newState, int aniNumber)
 	{
 		if (currentState == newState)
 		{
@@ -114,6 +102,8 @@ public class PlayerFSM : MonoBehaviour
 
 	void UpdateState()
 	{
+
+		Debug.Log(currentState);
 		switch (currentState)
 		{
 			case STATE.IDLE:
@@ -131,11 +121,34 @@ public class PlayerFSM : MonoBehaviour
 			case STATE.Dead:
 				DeadState();
 				break;
+			case STATE.Attack2:
+				AttackSkill2();
+				break;
+			case STATE.Attack3:
+				AttackSkill3();
+				break;
+			case STATE.Roll:
+				Roll();
+				break;
 			default:
 				break;
 		}
 	}
 
+	void Roll()
+	{
+
+	}
+	void AttackSkill2()
+	{
+		Debug.Log("aaaaa");
+		//ChangeState(STATE.IDLE, PlayerAni.ANI_IDLE);
+	}
+
+	void AttackSkill3()
+	{
+		//ChangeState(STATE.IDLE, PlayerAni.ANI_IDLE);
+	}
 	void IdleState()
 	{
 
@@ -152,7 +165,7 @@ public class PlayerFSM : MonoBehaviour
 		attackTimer = 0.0f;
 		transform.LookAt(curTargetPos);
 
-		ChangeState(STATE.AttackWait, PlayerAni.ANI_ATKIDLE);
+		//ChangeState(STATE.AttackWait, PlayerAni.ANI_ATKIDLE);
 	}
 
 	void AttackWaitState()
