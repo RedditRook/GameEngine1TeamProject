@@ -10,7 +10,7 @@ public class Merchant : NPC
 	public override void Start()
 	{
 		// TODO: NPC 시작 포지션 지정
-		name = "아리엘";
+		name = "아타라스";
 		shop = GameObject.Find("ShopList").GetComponent<Shop>();
 	}
 
@@ -22,7 +22,8 @@ public class Merchant : NPC
 	public override void ShowUI()
 	{
 		text.PrintName(name);
-		text.PrintText("현재 판매중인 상품 목록입니다.");
+		text.PrintText("아타라스 상회에 오신 것을 환영합니다.\n")
+		text.PrintText("찾으시는 물건이 있으신가요?");
 		shop.TryOpenShop();
 		text.ShowBox();
 	}
