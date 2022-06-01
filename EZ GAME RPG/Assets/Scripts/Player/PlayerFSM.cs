@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerFSM : MonoBehaviour
 {
+	[SerializeField]
+	Transform playerInputSpace = default;
+
 	public enum STATE
 	{
 		IDLE,
@@ -54,6 +57,8 @@ public class PlayerFSM : MonoBehaviour
 		{
 			return;
 		}
+
+		Debug.Log("asd");
 
 		curEnemy.GetComponent<EnemyFSM>().ShowHitEffect();
 
