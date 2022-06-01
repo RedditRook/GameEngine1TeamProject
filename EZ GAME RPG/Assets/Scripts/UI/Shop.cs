@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
 	private bool shop_opened;  // 인벤토리 열림 닫힘
-	public bool OnOpened { get; set; }
+	public bool OnOpened { get { return shop_opened; } }
 
 	[SerializeField]
 	private GameObject shop_image; // Inventory_Base 이미지
@@ -21,8 +21,7 @@ public class Shop : MonoBehaviour
 	void Start()
 	{
 		shop_opened = false;
-		OnOpened = shop_opened;
-		
+
 		shop_image.SetActive(false);
 	}
 

@@ -6,7 +6,7 @@ using TMPro;
 public class Inventory : MonoBehaviour
 {
 	static private bool inventoryActivated;  // 인벤토리 열림 닫힘
-	public bool OnActivated { get; set; }
+	public bool OnActivated { get { return inventoryActivated; } }
 
 	[SerializeField]
 	private GameObject inventory_image; // Inventory_Base 이미지
@@ -23,7 +23,6 @@ public class Inventory : MonoBehaviour
 	void Start()
 	{
 		inventoryActivated = false;
-		OnActivated = inventoryActivated;
 
 		inventory_image.SetActive(false);
 		slots = slots_parent.GetComponentsInChildren<InventorySlot>();
