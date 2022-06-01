@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item_type: 0
   name: Tier3 Sword
-  item_image: {fileID: 21300000, guid: ab129308e22a41e4e852cadb20a65ab5, type: 3}
+  item_image: {fileID: 21300000, guid: 4ab6a7652d219a8468fc1e773c456c2a, type: 3}
   item_prefab: {fileID: 0}
   price: 0

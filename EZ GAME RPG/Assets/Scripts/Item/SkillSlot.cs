@@ -23,7 +23,6 @@ public class SkillSlot : MonoBehaviour
 	{
 		skill = pskill;
 		skill_image.sprite = pskill.item_image;
-
 		text_Count.text = skill.name;
 
 		SetColor(1);

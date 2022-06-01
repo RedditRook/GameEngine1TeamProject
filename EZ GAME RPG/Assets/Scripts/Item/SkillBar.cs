@@ -11,7 +11,11 @@ public class SkillBar : MonoBehaviour
 	private GameObject slots_parent;    // Skill Grid
 	private SkillSlot[] slots;
 
-	public PlayerSkill for_test;
+	public PlayerSkill for_test1;
+	public PlayerSkill for_test2;
+	public PlayerSkill for_test3;
+	public PlayerSkill for_test4;
+
 
 	void Start()
 	{
@@ -41,7 +45,10 @@ public class SkillBar : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.J))
 		{
-			GetSkill(for_test);
+			GetSkill(for_test1);
+			GetSkill(for_test2);
+			GetSkill(for_test3);
+			GetSkill(for_test4);
 			Debug.Log("스킬 추가");
 		}
 	}
