@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Merchant : NPC
 {
+	private Shop shop;
+
 	// Start is called before the first frame update
 	public override void Start()
 	{
 		// TODO: NPC 시작 포지션 지정
 		name = "아리엘";
+		shop = GameObject.Find("ShopList").GetComponent<Shop>();
 	}
 
 	// Update is called once per frame
@@ -20,6 +23,7 @@ public class Merchant : NPC
 	{
 		text.PrintName(name);
 		text.PrintText("현재 판매중인 상품 목록입니다.");
+		shop.TryOpenShop();
 		text.ShowBox();
 	}
 

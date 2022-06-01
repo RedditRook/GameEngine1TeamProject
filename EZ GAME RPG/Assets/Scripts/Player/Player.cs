@@ -10,62 +10,43 @@ public class Player : MonoBehaviour
 	public bool skill4;
 
 	private float max_hp;
-	public float MaxHP
-	{
-		get { return max_hp; }
-	}
+	public float MaxHP { get; set; }
 
 	private float max_mp;
-	public float MaxMP
-	{
-		get { return max_mp; }
-	}
+	public float MaxMP { get; set; }
 
 	private float hp;
-	public float HP
-	{
-		get { return hp; }
-		set { hp = value; }
-	}
+	public float HP { get; set; }
 
 	private float mp;
-	public float MP
-	{
-		get { return mp; }
-		set { mp = value; }
-	}
+	public float MP { get; set; }
 
 	private int level;
-	public int Level
-	{
-		get { return level; }
-		set { level = value; }
-	}
+	public int Level { get; set; }
 
 	private int exp;
-	public int EXP
-	{
-		get { return exp; }
-		set { exp = value; }
-	}
+	public int EXP { get; set; }
 
 	private int maxexp;
-	public int MaxEXP
-	{
-		get { return maxexp; }
-		set { maxexp = value; }
-	}
+	public int MaxEXP { get; set; }
 
 	private bool interacting_npc;
-	public bool IsInteractingNPC
-	{
-		get { return interacting_npc; }
-		set { interacting_npc = value; }
-	}
+	public bool IsInteractingNPC { get; set; }
 
 	// Start is called before the first frame update
 	void Start()
 	{
+		MaxHP = max_hp;
+		MaxMP = max_mp;
+		MaxEXP = maxexp;
+
+		HP = hp;
+		MP = mp;
+		EXP = exp;
+		Level = level;
+
+		IsInteractingNPC = interacting_npc;
+
 		max_hp = 100;
 		max_mp = 100;
 

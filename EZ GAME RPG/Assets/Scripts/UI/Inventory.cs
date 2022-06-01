@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Inventory : MonoBehaviour
 {
-	static private bool inventoryActivated = false;  // 인벤토리 열림 닫힘
-	public bool OnActivated { get; }
+	static private bool inventoryActivated;  // 인벤토리 열림 닫힘
+	public bool OnActivated { get; set; }
 
 	[SerializeField]
 	private GameObject inventory_image; // Inventory_Base 이미지
@@ -16,10 +17,19 @@ public class Inventory : MonoBehaviour
 
 	public Item for_test;
 
+	private int gold;		// 소지금
+	public TextMeshProUGUI gold_text;
+
 	void Start()
 	{
+		inventoryActivated = false;
+		OnActivated = inventoryActivated;
+
 		inventory_image.SetActive(false);
 		slots = slots_parent.GetComponentsInChildren<InventorySlot>();
+		
+		gold = 0;
+		gold_text.text = "Gold: " + gold.ToString();
 	}
 
 	void Update()
@@ -88,11 +98,31 @@ public class Inventory : MonoBehaviour
 		}
 	}
 
+	public bool SpendGold(int _gold)
+	{
+		if (gold < _gold)
+		{
+			return false;
+		}
+
+		gold -= _gold;
+		gold_text.text = "Gold: " + gold.ToString();
+
+		return true;
+	}
+	
+	public void GetMoney(int _gold)
+	{
+		gold += _gold;
+		gold_text.text = "Gold: " + gold.ToString();
+	}
+
 	public void CheatGetLeather()
 	{
 		if (Input.GetKeyDown(KeyCode.L))
 		{
 			GetItem(for_test, 1);
+			GetMoney(100);
 		}
 	}
 	public void CheatGetLeatherLow()
@@ -100,6 +130,7 @@ public class Inventory : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.K))
 		{
 			GetItem(for_test, -1);
+			SpendGold(100);
 		}
 	}
 }

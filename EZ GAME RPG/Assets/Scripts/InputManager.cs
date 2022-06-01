@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
 	private GameObject player;
 	private NPC interact_npc;
 	private Inventory inventory;
+	private Shop shop;
 
 	private void Awake()
 	{
@@ -31,9 +32,10 @@ public class InputManager : MonoBehaviour
 	//업데이트
 	void Start()
 	{
-		player = GameObject.Find("Player");
+		player = GameObject.FindGameObjectWithTag("Player");
 		inventory = GameObject.Find("Inventory Controller").GetComponent<Inventory>();
 		interact_npc = GameObject.FindGameObjectWithTag("NPC").transform.GetChild(0).GetComponent<NPC>();
+		shop = GameObject.Find("ShopList").GetComponent<Shop>();
 	}
 
 	void MouseCheck()
@@ -116,18 +118,22 @@ public class InputManager : MonoBehaviour
 	// 상호작용 종료
 	private void EndInteraction()
 	{
-		// if else 구조를 이용하여 UI가 1개씩 닫히도록 한다
-		// 플레이어가 NPC와 상호작용을 하고 있을 때
-		if (player.GetComponent<Player>().IsInteractingNPC == true)
+		if (shop.OnOpened)
 		{
-			// 상호작용 종료
-			player.GetComponent<Player>().IsInteractingNPC = false;
-			interact_npc.HideUI();
+			shop.TryOpenShop();
 		}
 		// 인벤토리가 열려있으면 인벤토리를 닫는다
 		else if (inventory.OnActivated)
 		{
 			inventory.TryOpenInventory();
+		}
+		// if else 구조를 이용하여 UI가 1개씩 닫히도록 한다
+		// 플레이어가 NPC와 상호작용을 하고 있을 때
+		else if (player.GetComponent<Player>().IsInteractingNPC == true)
+		{
+			// 상호작용 종료
+			player.GetComponent<Player>().IsInteractingNPC = false;
+			interact_npc.HideUI();
 		}
 	}
 
