@@ -289,6 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   check: 2
   current_state: 0
+  item: {fileID: 11400000, guid: f18216f6da9849b48bc2b08ad0febea9, type: 2}
   hitEffects: {fileID: 1760898016246326399}
   selectmark: {fileID: 881797559}
 --- !u!114 &130756115684426730
@@ -304,7 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Skeleton
-  hp: 100
+  hp: 80
   atk: 5
   def: 5
   dg: 5

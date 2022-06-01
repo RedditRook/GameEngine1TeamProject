@@ -213,6 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   check: 1
   current_state: 0
+  item: {fileID: 11400000, guid: 4df7e01293e31c841b6788178174a16d, type: 2}
   hitEffects: {fileID: 1930700838637064979}
   selectmark: {fileID: 1479482108}
 --- !u!114 &248899447243718410
@@ -228,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Orc
-  hp: 20
+  hp: 60
   atk: 10
   def: 20
   dg: 20

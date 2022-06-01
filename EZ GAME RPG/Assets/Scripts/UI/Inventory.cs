@@ -29,6 +29,9 @@ public class Inventory : MonoBehaviour
 		
 		gold = 0;
 		gold_text.text = "Gold: " + gold.ToString();
+
+	
+
 	}
 
 	void Update()
@@ -36,6 +39,7 @@ public class Inventory : MonoBehaviour
 		//TryOpenInventory();
 		CheatGetLeather();
 		CheatGetLeatherLow();
+	
 	}
 
 	public void TryOpenInventory()
