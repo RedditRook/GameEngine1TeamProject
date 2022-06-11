@@ -6267,9 +6267,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117620deaa1502c4e974123fd3ec9b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  Player: {fileID: 0}
   check: 0
   current_state: 0
+  item: {fileID: 11400000, guid: 88b710a7850e3e24090d271691235a36, type: 2}
   hitEffects: {fileID: 9140833360048877052}
   selectmark: {fileID: 4505821417724729784}
 --- !u!114 &5038413681739194548

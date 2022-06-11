@@ -17,6 +17,9 @@ public class EnemyFSM : MonoBehaviour
 	public int check;
 	public State current_state = State.Idle;
 
+	Inventory inv;
+	public Item item;
+
 	EnemyParams myParams;
 	PlayerParams playerparam;
 	GameObject curEnemy;
@@ -93,6 +96,7 @@ public class EnemyFSM : MonoBehaviour
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 		playerParams = player.gameObject.GetComponent<PlayerParams>();
 		hideselection();
+		inv = GameObject.Find("Inventory Controller").GetComponent<Inventory>();
 		hitEffects.Stop();
 	}
 
@@ -152,14 +156,20 @@ public class EnemyFSM : MonoBehaviour
 		
 		if(check ==0)
 		{
+			inv.GetGold(100);
+			inv.GetItem(item);
 			ChangeState(State.Idle, EnemyAni.IDLE);
 		}
 		if (check == 1)
 		{
+			inv.GetGold(100);
+			inv.GetItem(item);
 			ChangeState(State.Idle, GoblinAni.IDLE);
 		}
 		if (check == 2)
 		{
+			inv.GetGold(100);
+			inv.GetItem(item);
 			ChangeState(State.Idle, SkeletonAni.IDLE);
 		}
 
