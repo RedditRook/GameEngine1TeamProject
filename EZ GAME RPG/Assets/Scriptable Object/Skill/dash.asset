@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faebd5e25220ff847bb589ab93cfbc85, type: 3}
   m_Name: dash
   m_EditorClassIdentifier: 
-  name: 4
+  name: Dash
   item_image: {fileID: 21300000, guid: 971043ce93be0834f808c13ef77c6889, type: 3}
   item_prefab: {fileID: 0}
