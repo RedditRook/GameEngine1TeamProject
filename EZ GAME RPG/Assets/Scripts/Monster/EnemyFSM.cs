@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyFSM : MonoBehaviour
 {
-	public Player Player;
+	public Player Players;
 	public enum State
 	{
 		Idle,     //정지
@@ -53,12 +52,7 @@ public class EnemyFSM : MonoBehaviour
 
 	Vector3 originpos;
 
-	NavMeshAgent nav;
 
-	private void Awake()
-	{
-		nav = GetComponent<NavMeshAgent>();
-	}
 
 	void Start()
 	{
@@ -339,6 +333,5 @@ public class EnemyFSM : MonoBehaviour
 	void Update()
 	{
 		UpdateState();
-		nav.SetDestination(player.position);
 	}
 }
