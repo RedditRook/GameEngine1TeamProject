@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faebd5e25220ff847bb589ab93cfbc85, type: 3}
-  m_Name: First
+  m_Script: {fileID: 11500000, guid: eb4eb3fe2392bff41a6985705d68dd82, type: 3}
+  m_Name: Leather 1
   m_EditorClassIdentifier: 
-  skillbar: {fileID: 0}
-  name: FirstSkill
+  item_type: 2
+  name: Leather
   item_image: {fileID: 21300000, guid: e7196b440fc021c459819d8e3878c84d, type: 3}
   item_prefab: {fileID: 3919274465456509951, guid: 7660cec7be9c47d4586cadf1abd78b19,
     type: 3}
