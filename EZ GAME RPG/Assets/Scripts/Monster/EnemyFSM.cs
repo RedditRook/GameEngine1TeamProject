@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyFSM : MonoBehaviour
 {
+	public Player Player;
 	public enum State
 	{
 		Idle,     //정지
@@ -47,10 +49,17 @@ public class EnemyFSM : MonoBehaviour
 	public int spawnid { get; set; }
 
 	Vector3 originpos;
-	
+
+	NavMeshAgent nav;
+
+	private void Awake()
+	{
+		nav = GetComponent<NavMeshAgent>();
+	}
+
 	void Start()
 	{
-
+		
 		if (check == 0)
 		{
 			myAni = GetComponent<EnemyAni>();
@@ -83,7 +92,7 @@ public class EnemyFSM : MonoBehaviour
 
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 		playerParams = player.gameObject.GetComponent<PlayerParams>();
-
+		hideselection();
 		hitEffects.Stop();
 	}
 
@@ -107,7 +116,6 @@ public class EnemyFSM : MonoBehaviour
 	public void AttackCall()
 	{		
 		int attackpower = myParams.GetAttack();
-		Debug.Log("!!!!!!!!!!!!!!!!!!!!!");
 		playerparam.SetEnemyAttack(attackpower);
 		//playerParams.SetEnemyAttack(myParams.get_random_attack());
 	}
@@ -321,5 +329,6 @@ public class EnemyFSM : MonoBehaviour
 	void Update()
 	{
 		UpdateState();
+		nav.SetDestination(player.position);
 	}
 }
