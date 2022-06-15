@@ -243,22 +243,24 @@ public class PlayerFSM : MonoBehaviour
 	}
 	void Skill()
 	{
-		if(Input.GetKeyDown(KeyCode.Q))
+		if(Input.GetKey(KeyCode.Q))
 		{
 			Skill1State();
 		}
-		if (Input.GetKeyDown(KeyCode.W))
+		if (Input.GetKey(KeyCode.W))
 		{
 			Skill2State();
 		}
-		if (Input.GetKeyDown(KeyCode.E))
+		if (Input.GetKey(KeyCode.E))
 		{
 			Skill3State();
 		}
-		if (Input.GetKeyDown(KeyCode.R))
+		if (Input.GetKey(KeyCode.R))
 		{
 			Skill4State();
 		}
+
+	
 	}
 	// Update is called once per frame
 	void Update()
