@@ -17,7 +17,7 @@ public class BossControll : MonoBehaviour
 	public float AttackDis = 2.0f; // 공격 사거리
 	public float Attacktackle = 0.0f;
 	
-
+	
 	public AttackTest _Tackle;
 
 	private bool isDead = false; // 사망여부
@@ -47,9 +47,6 @@ public class BossControll : MonoBehaviour
 
 		StartCoroutine(this.CheckState());
 		StartCoroutine(this.CheckStateForAction());
-
-		
-
 	}
 
 	IEnumerator CheckState()
@@ -109,7 +106,10 @@ public class BossControll : MonoBehaviour
 					_animator.SetBool("Attack_2", true);
 					_animator.SetBool("Attack_3", true);
 					_animator.SetBool("Attack_Change", true);
-					
+				//	if(_Tackle.CheckCol)
+					//{
+						
+					//}
 					break;
 				case CurrentState.attack2:
 					nvAgent.Stop();
