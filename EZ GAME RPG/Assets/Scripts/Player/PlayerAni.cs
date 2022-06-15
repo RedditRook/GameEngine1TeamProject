@@ -11,6 +11,10 @@ public class PlayerAni : MonoBehaviour
 	public const int ANI_ATTACK = 2;
 	public const int ANI_ATKIDLE = 3;
 	public const int ANI_DEAD = 4;
+	public const int ANI_SKILL1 = 5;
+	public const int ANI_SKILL2 = 6;
+	public const int ANI_SKILL3 = 7;
+	public const int ANI_SKILL4 = 8;
 
 	Animator anim;
 
