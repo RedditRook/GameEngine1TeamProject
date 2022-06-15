@@ -13,7 +13,11 @@ public class PlayerFSM : MonoBehaviour
 		WALK,
 		Attack,
 		AttackWait,
-		Dead
+		Dead,
+		Skill1,
+		Skill2,
+		Skill3,
+		Skill4
 	}
 
 	public STATE currentState = STATE.IDLE;
@@ -131,6 +135,18 @@ public class PlayerFSM : MonoBehaviour
 			case STATE.Dead:
 				DeadState();
 				break;
+			case STATE.Skill1:
+				Skill1State();
+				break;
+			case STATE.Skill2:
+				Skill2State();
+				break;
+			case STATE.Skill3:
+				Skill3State();
+				break;
+			case STATE.Skill4:
+				Skill4State();
+				break;
 			default:
 				break;
 		}
@@ -170,6 +186,25 @@ public class PlayerFSM : MonoBehaviour
 
 	}
 
+	void Skill1State()
+	{
+		ChangeState(STATE.Skill1, PlayerAni.ANI_SKILL1);
+	}
+
+	void Skill2State()
+	{
+		ChangeState(STATE.Skill2, PlayerAni.ANI_SKILL2);
+	}
+
+	void Skill3State()
+	{
+		ChangeState(STATE.Skill3, PlayerAni.ANI_SKILL3);
+	}
+
+	void Skill4State()
+	{
+		ChangeState(STATE.Skill4, PlayerAni.ANI_SKILL4);
+	}
 	public void MoveTo(Vector3 tPos)
 	{
 		if (currentState == STATE.Dead)
@@ -206,10 +241,29 @@ public class PlayerFSM : MonoBehaviour
 			ChangeState(STATE.Attack, PlayerAni.ANI_ATTACK);
 		}
 	}
-
+	void Skill()
+	{
+		if(Input.GetKeyDown(KeyCode.Q))
+		{
+			Skill1State();
+		}
+		if (Input.GetKeyDown(KeyCode.W))
+		{
+			Skill2State();
+		}
+		if (Input.GetKeyDown(KeyCode.E))
+		{
+			Skill3State();
+		}
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			Skill4State();
+		}
+	}
 	// Update is called once per frame
 	void Update()
 	{
 		UpdateState();
+		Skill();
 	}
 }
