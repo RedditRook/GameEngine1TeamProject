@@ -46,7 +46,7 @@ public class InputManager : MonoBehaviour
 
 			if (Physics.Raycast(ray, out hit))
 			{
-				if (hit.collider.gameObject.name == "Plane003")
+				if (hit.collider.gameObject.tag == "terrain")
 				{
 					//player.transform.position = hit.point;
 
@@ -154,21 +154,21 @@ public class InputManager : MonoBehaviour
 	private void Skill1()
 	{
 		// TODO: 스킬 발동
-		Debug.Log("Q스킬 사용11");
-		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Attack, 2);
+		//Debug.Log("Q스킬 사용11");
+		//player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Attack, 2);
 	}
 
 	private void Skill2()
 	{
-		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Attack2, 5);
+		//player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Attack2, 5);
 	}
 	
 	private void Skill3()
 	{
-		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Attack3, 6);
+		//player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Attack3, 6);
 	}
 	private void Skill4()
 	{
-		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Roll, 7);
+		//player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Roll, 7);
 	}
 }

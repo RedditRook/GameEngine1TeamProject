@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13eb889da7564c544b98982c8221d110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Monprefab: {fileID: 7454920749802426822, guid: b8a53bfffe6baf845805ea628259dbaa,
+  Monprefab: {fileID: 3948279708965350068, guid: b8a53bfffe6baf845805ea628259dbaa,
     type: 3}
   spawnnumber: 4
   respawndelay: 3
