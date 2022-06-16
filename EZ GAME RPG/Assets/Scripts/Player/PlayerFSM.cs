@@ -53,7 +53,7 @@ public class PlayerFSM : MonoBehaviour
 		sword = GetComponent<AudioSource>();
 
 		ChangeState(STATE.IDLE, PlayerAni.ANI_IDLE);
-		inv = transform.Find("Inventory Controller").GetComponent<Inventory>();
+		inv = transform.Find("InventoryController").GetComponent<Inventory>();
 	}
 
 	public void ChangeToPlayerDead()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyFSM : MonoBehaviour
 {
-	public Player Players;
+	
 	public enum State
 	{
 		Idle,     //정지

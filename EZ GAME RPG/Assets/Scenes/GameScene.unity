@@ -916,7 +916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shop_image: {fileID: 82933356}
   slots_parent: {fileID: 811067381}
-  inventory: {fileID: 0}
+  inventory: {fileID: 1038846724}
   slots:
   - {fileID: 0}
   - {fileID: 0}
@@ -1364,7 +1364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shop_image: {fileID: 507294651}
   slots_parent: {fileID: 5458329}
-  inventory: {fileID: 0}
+  inventory: {fileID: 1038846724}
   slots:
   - {fileID: 0}
   - {fileID: 0}
@@ -5918,11 +5918,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e53c15254028c42a1ae7964633e18e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill1: 0
-  skill2: 0
-  skill3: 0
-  skill4: 0
-  skillbar: {fileID: 0}
 --- !u!65 &1257445198
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6796,11 +6791,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e53c15254028c42a1ae7964633e18e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill1: 0
-  skill2: 0
-  skill3: 0
-  skill4: 0
-  skillbar: {fileID: 0}
 --- !u!114 &1598293625
 MonoBehaviour:
   m_ObjectHideFlags: 0
