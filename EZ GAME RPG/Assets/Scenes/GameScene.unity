@@ -7200,6 +7200,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Merchant
       objectReference: {fileID: 0}
+    - target: {fileID: 8730443280127124581, guid: 6e9d13e1f08358f499ccb62a68e67b8a,
+        type: 3}
+      propertyPath: m_TagString
+      value: NPC
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e9d13e1f08358f499ccb62a68e67b8a, type: 3}
 --- !u!4 &1721842612 stripped
@@ -8921,7 +8926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100132, guid: 2c76b8ea436b83747994eae7462a8d69, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: NPC
       objectReference: {fileID: 0}
     - target: {fileID: 400132, guid: 2c76b8ea436b83747994eae7462a8d69, type: 3}
       propertyPath: m_RootOrder
