@@ -114,7 +114,7 @@ public class InputManager : MonoBehaviour
 			}
 
 			// 해당 NPC와 플레이어 사이의 거리가 5 미만인 경우 상호작용 개시
-			if (min_distance < 5.0f)
+			if (min_distance < 20.0f)
 			{
 				player.GetComponent<Player>().IsInteractingNPC = true;
 				interact_npc.ShowUI();

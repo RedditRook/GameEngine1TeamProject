@@ -15,8 +15,14 @@ public class HpMpBar : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+
 		transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().fillAmount = player.curHp / player.MaxHp;
-		//Debug.Log(player.HP);
+	
 		//transform.GetChild(1).GetChild(0).gameObject.GetComponent<Image>().fillAmount = player.MP / player.MaxMP;
+
+		//transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().fillAmount = player.HP / player.MaxHP;
+		//transform.GetChild(1).GetChild(0).gameObject.GetComponent<Image>().fillAmount = player.MP / player.MaxMP;
+		//transform.GetChild(2).GetChild(0).gameObject.GetComponent<Image>().fillAmount = player.EXP / player.MaxEXP;
+
 	}
 }
