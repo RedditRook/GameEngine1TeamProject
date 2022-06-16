@@ -1915,8 +1915,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc553439b54c18c479aec6d78cefe139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  leveltext: {fileID: 0}
+  player: {fileID: 1257445194}
+  leveltext: {fileID: 910485667}
   SkillBar_image: {fileID: 436437582}
   slots_parent: {fileID: 48740458}
   for_test1: {fileID: 11400000, guid: 601c4fb2a22aa3246b960ae857e0e82d, type: 2}
@@ -6329,7 +6329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e49ef58110e1d654686b43b7e04aa161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1257445194}
 --- !u!1 &1375226175 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8996979104810966863, guid: b4eb9b7decad6444c87d79bf08ce3f79,
