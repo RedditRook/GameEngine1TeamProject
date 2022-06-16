@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 	public bool skill3;
 	public bool skill4;
 
+	public SkillBar skillbar;
+
 	private float max_hp;
 	public float MaxHP { get; set; }
 
@@ -68,25 +70,30 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		GetEXP(1);
 	}
 
 	void SkillUnlock()
 	{
-		if (level >= 2)
+		if (Level >= 2 && skill1 == false)
 		{
 			skill1 = true;
+			skillbar.GetSkill(skillbar.for_test1);
 		}
-		if (level >= 4)
+		if (Level >= 4 && skill2 == false)
 		{
 			skill2 = true;
+			skillbar.GetSkill(skillbar.for_test2);
 		}
-		if (level >= 7)
+		if (Level >= 7 && skill3 == false)
 		{
 			skill3 = true;
+			skillbar.GetSkill(skillbar.for_test3);
 		}
-		if (level >= 10)
+		if (Level >= 10 && skill4 == false)
 		{
 			skill4 = true;
+			skillbar.GetSkill(skillbar.for_test4);
 		}
 	}
 
@@ -94,6 +101,7 @@ public class Player : MonoBehaviour
 	{
 		Level++;
 		EXP = 0.0f;
+		skillbar.SetLevelText(Level);
 		SkillUnlock();
 	}
 
