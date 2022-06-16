@@ -24,11 +24,11 @@ public class Player : MonoBehaviour
 	private int level;
 	public int Level { get; set; }
 
-	private int exp;
-	public int EXP { get; set; }
+	private float exp;
+	public float EXP { get; set; }
 
-	private int maxexp;
-	public int MaxEXP { get; set; }
+	private float maxexp;
+	public float MaxEXP { get; set; }
 
 	private bool interacting_npc;
 	public bool IsInteractingNPC { get; set; }
@@ -41,6 +41,9 @@ public class Player : MonoBehaviour
 
 		hp = 100;
 		mp = 100;
+
+		exp = 0;
+		maxexp = 100;
 
 		level = 1;
 
@@ -65,7 +68,6 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		
 	}
 
 	void SkillUnlock()
@@ -85,6 +87,22 @@ public class Player : MonoBehaviour
 		if (level >= 10)
 		{
 			skill4 = true;
+		}
+	}
+
+	void LevelUp()
+	{
+		Level++;
+		EXP = 0.0f;
+		SkillUnlock();
+	}
+
+	void GetEXP(float expamount)
+	{
+		EXP += expamount;
+		if(EXP >= maxexp)
+		{
+			LevelUp();
 		}
 	}
 }
