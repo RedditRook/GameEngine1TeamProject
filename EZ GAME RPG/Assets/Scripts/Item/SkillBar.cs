@@ -5,7 +5,7 @@ using TMPro;
 
 public class SkillBar : MonoBehaviour
 {
-	public Player player;
+	public PlayerParams player;
 	public TextMeshProUGUI leveltext;
 	[SerializeField]
 	private GameObject SkillBar_image; // Skill_Base 이미지
@@ -22,7 +22,7 @@ public class SkillBar : MonoBehaviour
 	void Start()
 	{
 		slots = slots_parent.GetComponentsInChildren<SkillSlot>();
-		leveltext.text = "LV : " + player.Level;
+		leveltext.text = "LV : 1 ";
 	}
 
 	void Update()
@@ -55,6 +55,7 @@ public class SkillBar : MonoBehaviour
 
 	public void SetLevelText(int level)
 	{
+		Debug.Log(level);
 		leveltext.text = "LV : " + level;
 	}
 }

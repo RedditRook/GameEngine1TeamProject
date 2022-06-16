@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,5 +31,6 @@ public class Merchant : NPC
 	public override void HideUI()
 	{
 		text.HideBox();
+		shop.TryOpenShop();
 	}
 }
