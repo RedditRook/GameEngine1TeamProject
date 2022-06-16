@@ -94,7 +94,7 @@ public class InputManager : MonoBehaviour
 	private void StartInteraction()
 	{
 		// 플레이어가 npc와 상호작용을 하지 않고 있을 때
-		if (player.GetComponent<Player>().IsInteractingNPC == false)
+		if (player.GetComponent<PlayerParams>().IsInteractingNPC == false)
 		{
 			var npc = GameObject.FindGameObjectWithTag("NPC").transform;
 			float min_distance = 100.0f;
@@ -116,7 +116,7 @@ public class InputManager : MonoBehaviour
 			// 해당 NPC와 플레이어 사이의 거리가 5 미만인 경우 상호작용 개시
 			if (min_distance < 20.0f)
 			{
-				player.GetComponent<Player>().IsInteractingNPC = true;
+				player.GetComponent<PlayerParams>().IsInteractingNPC = true;
 				interact_npc.ShowUI();
 			}
 		}
@@ -127,10 +127,10 @@ public class InputManager : MonoBehaviour
 	{
 		// if else 구조를 이용하여 UI가 1개씩 닫히도록 한다
 		// 플레이어가 NPC와 상호작용을 하고 있을 때
-		if (player.GetComponent<Player>().IsInteractingNPC == true)
+		if (player.GetComponent<PlayerParams>().IsInteractingNPC == true)
 		{
 			// 상호작용 종료
-			player.GetComponent<Player>().IsInteractingNPC = false;
+			player.GetComponent<PlayerParams>().IsInteractingNPC = false;
 			interact_npc.HideUI();
 		}
 		// 인벤토리가 열려있으면 인벤토리를 닫는다
@@ -155,20 +155,23 @@ public class InputManager : MonoBehaviour
 	{
 		// TODO: 스킬 발동
 		//Debug.Log("Q스킬 사용11");
-		//player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Attack, 2);
+		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Skill1, 5);
 	}
 
 	private void Skill2()
 	{
-		//player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Attack2, 5);
+		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Skill2, 6);
+		//player.GetComponent<PlayerFSM>().Skill2State();
 	}
 	
 	private void Skill3()
 	{
-		//player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Attack3, 6);
+		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Skill3, 7);
+		//player.GetComponent<PlayerFSM>().Skill3State();
 	}
 	private void Skill4()
 	{
-		//player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Roll, 7);
+		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Skill4, 8);
+		//player.GetComponent<PlayerFSM>().Skill4State();
 	}
 }

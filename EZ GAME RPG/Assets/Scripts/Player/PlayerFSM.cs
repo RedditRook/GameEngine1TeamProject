@@ -17,7 +17,8 @@ public class PlayerFSM : MonoBehaviour
 		Skill1,
 		Skill2,
 		Skill3,
-		Skill4
+		Skill4,
+		SkillDelay,
 	}
 
 	public STATE currentState = STATE.IDLE;
@@ -35,7 +36,6 @@ public class PlayerFSM : MonoBehaviour
 	PlayerAni myAni;
 	PlayerParams myParams;
 	EnemyParams curEnemyParams;
-	
 	AudioSource sword;
 
 	Inventory inv;
@@ -49,11 +49,11 @@ public class PlayerFSM : MonoBehaviour
 
 		myParams = GetComponent<PlayerParams>();
 		myParams.InitParams();
-		myParams.deadEvent.AddListener(ChangeToPlayerDead);
+		//myParams.deadEvent.AddListener(ChangeToPlayerDead);
 		sword = GetComponent<AudioSource>();
 
 		ChangeState(STATE.IDLE, PlayerAni.ANI_IDLE);
-		inv = transform.Find("Inventory Controller").GetComponent<Inventory>();
+		inv = transform.Find("InventoryController").GetComponent<Inventory>();
 	}
 
 	public void ChangeToPlayerDead()
@@ -61,26 +61,53 @@ public class PlayerFSM : MonoBehaviour
 		ChangeState(STATE.Dead, PlayerAni.ANI_DEAD);
 	}
 
+	
+	void OnTriggerEnter(Collider col)
+    {
+		if(col.tag == "Enemy")
+        {
+			GameObject mob = col.gameObject;
+			EnemyFSM E_FSM = mob.GetComponent<EnemyFSM>();
+			float hp = myParams.GetHp();
+			Debug.Log(hp);
+			hp = hp - E_FSM.myParams.atk; // 공격력 가져오기
+			Debug.Log(hp);
+			myParams.SetHp(hp);
+
+			//Debug.Log(myParams.GetHp());
+		}
+	}
+
+	
+
+	void SkillDelay()
+    {
+		ChangeState(STATE.IDLE, PlayerAni.ANI_IDLE);
+    }
+	public void GetDamage(int atk)
+    {
+	
+    }
 	public void AttackCal()
 	{
 		if (curEnemy == null)
 		{
 			return;
 		}
-
 		
+
 		if (curEnemy == null)
 		{
 			return;
 		}
 		curEnemy.GetComponent<EnemyFSM>().ShowHitEffect();
 
-		int attackpower = myParams.GetAttack();
+		//int attackpower = myParams.GetAttack();
 		sword.Play(0);
 
-		curEnemyParams.SetEnemyAttack(attackpower);
+		//curEnemyParams.SetEnemyAttack(attackpower);
 	}
-	
+
 	public void AttackEnemy(GameObject enemy)
 	{
 		if (curEnemy != null && curEnemy == enemy)
@@ -105,13 +132,12 @@ public class PlayerFSM : MonoBehaviour
 			curEnemyParams = null;
 		}
 	}
-	void ChangeState(STATE newState, int aniNumber)
+	public void ChangeState(STATE newState, int aniNumber)
 	{
 		if (currentState == newState)
 		{
 			return;
 		}
-
 		myAni.ChangeAni(aniNumber);
 		currentState = newState;
 	}
@@ -135,26 +161,13 @@ public class PlayerFSM : MonoBehaviour
 			case STATE.Dead:
 				DeadState();
 				break;
-			case STATE.Skill1:
-				Skill1State();
-				break;
-			case STATE.Skill2:
-				Skill2State();
-				break;
-			case STATE.Skill3:
-				Skill3State();
-				break;
-			case STATE.Skill4:
-				Skill4State();
-				break;
 			default:
 				break;
 		}
 	}
 
-	void IdleState()
+	public void IdleState()
 	{
-
 	}
 
 	void MoveState()
@@ -186,25 +199,31 @@ public class PlayerFSM : MonoBehaviour
 
 	}
 
-	void Skill1State()
+	public void Skill1State()
 	{
+		//ChangeState(STATE.IDLE, PlayerAni.ANI_IDLE);
 		ChangeState(STATE.Skill1, PlayerAni.ANI_SKILL1);
+		//Debug.Log("Q스킬 사용11");
 	}
 
-	void Skill2State()
+	public void Skill2State()
 	{
 		ChangeState(STATE.Skill2, PlayerAni.ANI_SKILL2);
+		//ChangeState(STATE.AttackWait, PlayerAni.ANI_ATKIDLE);
 	}
 
-	void Skill3State()
+	public void Skill3State()
 	{
 		ChangeState(STATE.Skill3, PlayerAni.ANI_SKILL3);
+		//ChangeState(STATE.AttackWait, PlayerAni.ANI_ATKIDLE);
 	}
 
-	void Skill4State()
+	public void Skill4State()
 	{
 		ChangeState(STATE.Skill4, PlayerAni.ANI_SKILL4);
+		//ChangeState(STATE.AttackWait, PlayerAni.ANI_ATKIDLE);
 	}
+
 	public void MoveTo(Vector3 tPos)
 	{
 		if (currentState == STATE.Dead)
@@ -243,29 +262,31 @@ public class PlayerFSM : MonoBehaviour
 	}
 	void Skill()
 	{
-		if(Input.GetKey(KeyCode.Q))
+		ChangeState(STATE.IDLE, PlayerAni.ANI_IDLE);
+
+		if (Input.GetKeyDown(KeyCode.Q))
 		{
 			Skill1State();
 		}
-		if (Input.GetKey(KeyCode.W))
+		if (Input.GetKeyDown(KeyCode.W))
 		{
 			Skill2State();
 		}
-		if (Input.GetKey(KeyCode.E))
+		if (Input.GetKeyDown(KeyCode.E))
 		{
 			Skill3State();
 		}
-		if (Input.GetKey(KeyCode.R))
+		if (Input.GetKeyDown(KeyCode.R))
 		{
 			Skill4State();
 		}
 
-	
 	}
 	// Update is called once per frame
 	void Update()
 	{
 		UpdateState();
-		Skill();
+		//Skill();
 	}
 }
+

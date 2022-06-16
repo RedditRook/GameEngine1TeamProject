@@ -15,7 +15,7 @@ public class EnemyFSM : MonoBehaviour
 	public int check;
 	public State current_state = State.Idle;
 
-	EnemyParams myParams;
+	public EnemyParams myParams;
 
 	EnemyAni myAni;
 	GoblinAni goani;
@@ -25,6 +25,9 @@ public class EnemyFSM : MonoBehaviour
 	public Item item;
 
 	Transform player;
+	
+
+	//Transform player;
 
 	PlayerParams playerParams;
 
@@ -65,6 +68,7 @@ public class EnemyFSM : MonoBehaviour
 
 		hideselection();
 		myParams = GetComponent<EnemyParams>();
+		myParams.InitParams();
 		myParams.deadEvent.AddListener(CallDeadEvent);
 
 		inv = GameObject.Find("Inventory Controller").GetComponent<Inventory>();
@@ -81,7 +85,7 @@ public class EnemyFSM : MonoBehaviour
 			ChangeState(State.Idle, SkeletonAni.IDLE);
 		}
 
-		player = GameObject.FindGameObjectWithTag("Player").transform;
+		player = GameObject.Find("Player").transform;
 		playerParams = player.gameObject.GetComponent<PlayerParams>();
 
 		hitEffects.Stop();
@@ -94,7 +98,6 @@ public class EnemyFSM : MonoBehaviour
 		GetComponent<BoxCollider>().enabled = true;
 	}
 
-
 	public void hideselection()
 	{
 		selectmark.SetActive(false);
@@ -106,7 +109,7 @@ public class EnemyFSM : MonoBehaviour
 	}
 	public void AttackCal()
 	{
-		int attackpower = playerParams.GetAttack();
+		int attackpower = myParams.GetAttack();
 		myParams.SetEnemyAttack(attackpower);
 	}
 
@@ -169,19 +172,27 @@ public class EnemyFSM : MonoBehaviour
 		switch (current_state)
 		{
 			case State.Idle:
+				Debug.Log(current_state);
 				IdleState();
 				break;
 			case State.Chase:
+				Debug.Log(current_state);
 				ChaseState();
 				break;
 			case State.Attack:
+				Debug.Log(current_state);
 				AttackState();
 				break;
 			case State.Dead:
+				Debug.Log(current_state);
 				DeadState();
 				break;
 			case State.NoState:
+				Debug.Log(current_state);
 				NoState();
+				break;
+			default:
+				Debug.Log(current_state);
 				break;
 		}
 	}
@@ -213,6 +224,7 @@ public class EnemyFSM : MonoBehaviour
 	{
 		if (GetDistanceFromPlayer() < chase_distance)
 		{
+
 			if (check == 0)
 			{
 				ChangeState(State.Chase, EnemyAni.WALK);

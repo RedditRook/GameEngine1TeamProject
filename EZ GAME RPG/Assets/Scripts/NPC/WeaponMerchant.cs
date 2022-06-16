@@ -31,5 +31,6 @@ public class WeaponMerchant : NPC
 	public override void HideUI()
 	{
 		text.HideBox();
+		shop.TryOpenShop();
 	}
 }

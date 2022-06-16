@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SkillBar : MonoBehaviour
 {
-	public Player player;
+	public PlayerParams player;
+	public TextMeshProUGUI leveltext;
 	[SerializeField]
 	private GameObject SkillBar_image; // Skill_Base 이미지
 	[SerializeField]
@@ -20,12 +22,11 @@ public class SkillBar : MonoBehaviour
 	void Start()
 	{
 		slots = slots_parent.GetComponentsInChildren<SkillSlot>();
+		leveltext.text = "LV : 1 ";
 	}
 
 	void Update()
 	{
-		CheatGetSkill();
-
 	}
 
 	public void GetSkill(PlayerSkill _skill)
@@ -35,7 +36,6 @@ public class SkillBar : MonoBehaviour
 			if (slots[i].skill == null)
 			{
 				slots[i].AddSkill(_skill);
-				Debug.Log(i);
 				return;
 			}
 		}
@@ -49,7 +49,13 @@ public class SkillBar : MonoBehaviour
 			GetSkill(for_test2);
 			GetSkill(for_test3);
 			GetSkill(for_test4);
-			Debug.Log("스킬 추가");
+			//Debug.Log("스킬 추가");
 		}
+	}
+
+	public void SetLevelText(int level)
+	{
+		//Debug.Log(level);
+		leveltext.text = "LV : " + level;
 	}
 }
