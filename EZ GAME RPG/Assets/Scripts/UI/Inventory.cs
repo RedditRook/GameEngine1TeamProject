@@ -178,8 +178,8 @@ public class Inventory : MonoBehaviour
 						{
 							GetItem(slots[i].item, -1);
 							player.curHp += 50;
-							if (player.curHp > 100)
-								player.curHp = 100;
+							if (player.curHp > player.MaxHp)
+								player.curHp = player.MaxHp;
 						}
 
 					}
@@ -202,6 +202,8 @@ public class Inventory : MonoBehaviour
 						{
 							GetItem(slots[i].item, -1);
 							player.curMp += 50;
+							if (player.curMp > player.MaxMp)
+								player.curMp = player.MaxMp;
 						}
 
 					}
@@ -225,8 +227,10 @@ public class Inventory : MonoBehaviour
 							GetItem(slots[i].item, -1);
 							player.curHp += 30;
 							player.curMp += 30;
-							if (player.curHp > 100)
-								player.curHp = 100;
+							if (player.curHp > player.MaxHp)
+								player.curHp = player.MaxHp;
+							if (player.curMp > player.MaxMp)
+								player.curMp = player.MaxMp;
 						}
 
 					}
