@@ -56,17 +56,17 @@ public class ShopSlot : MonoBehaviour       //인벤토리 슬롯에
 	{
 		if(item.item_type == Item.ITEMTYPE.equipment)
 		{
-			if (item.name == "Tier1 Armor")
+			if (item.name == "갑옷")
 				player.GetWeapon(1, 1);
-			if (item.name == "Tier2 Armor" && _inventory.GetItem(item.forprice, -5))
+			if (item.name == "좋은 갑옷" && _inventory.GetItem(item.forprice, -5))
 				player.GetWeapon(1, 2);
-			if (item.name == "Tier3 Armor" && _inventory.GetItem(item.forprice, -10))
+			if (item.name == "더욱 튼튼한 갑옷" && _inventory.GetItem(item.forprice, -10))
 				player.GetWeapon(1, 3);
-			if (item.name == "Tier1 Sword")
+			if (item.name == "검")
 				player.GetWeapon(0, 1);
-			if (item.name == "Tier2 Sword" && _inventory.GetItem(item.forprice, -5))
+			if (item.name == "강한 검" && _inventory.GetItem(item.forprice, -5))
 				player.GetWeapon(0, 2);
-			if (item.name == "Tier3 Sword" && _inventory.GetItem(item.forprice, -10))
+			if (item.name == "굉장히 강한 검" && _inventory.GetItem(item.forprice, -10))
 				player.GetWeapon(0, 3);
 		}
 

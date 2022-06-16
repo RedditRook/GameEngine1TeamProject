@@ -27,6 +27,7 @@ public class PlayerFSM : MonoBehaviour
 
 	public float rotAnglePerSecond = 360.0f; // 1초에 플레이어의 방향을 360도 회전
 	public float moveSpeed = 2.0f; // 초당 2미터의 속도
+	public float TimeCount = 120.0f;
 
 	float attackDelay = 2.0f; // 어텍 딜레이
 	float attackTimer = 0.0f;
@@ -64,35 +65,56 @@ public class PlayerFSM : MonoBehaviour
 	}
 
 	
-	void OnTriggerEnter(Collider col)
+	void OnTriggerStay(Collider col)
     {
-		if(col.tag == "Enemy")
-        {
-			GameObject mob = col.gameObject;
-			EnemyFSM E_FSM = mob.GetComponent<EnemyFSM>();
-			float hp = myParams.GetHp();
-			hp = hp - E_FSM.myParams.atk; // 공격력 가져오기
-			myParams.SetHp(hp);
-		}
-
-		else if(col.tag == "BossAttack")
-        {
-			GameObject Crab = col.gameObject;
-			AttackTest AT = Crab.GetComponent<AttackTest>();
-			int st = Boss.GetComponent<BossControll>().GetState();
-			Debug.Log("보스다!!");
-			if (st == 2)
+		TimeCount--;
+		if (TimeCount < 0)
+		{
+			if (col.tag == "Enemy")
 			{
+				GameObject mob = col.gameObject;
+				EnemyFSM E_FSM = mob.GetComponent<EnemyFSM>();
 				float hp = myParams.GetHp();
-				hp = hp - AT.atk;
+				hp = hp - E_FSM.myParams.atk; // 공격력 가져오기
 				myParams.SetHp(hp);
-			}
-			//Debug.Log(myParams.GetHp());
-		}
+				if (hp < 0)
+					ChangeToPlayerDead();
 
+			}
+			if (col.tag == "BossAttack")
+			{
+				GameObject Crab = col.gameObject;
+				int st = Boss.GetComponent<BossControll>().GetState();
+				Debug.Log(st);
+				if (st == 3)
+				{
+					float hp = myParams.GetHp();
+					hp = hp - 50;
+					Debug.Log(hp);
+					myParams.SetHp(hp);
+					if (hp <= 0)
+						ChangeToPlayerDead();
+				}
+
+				else if (st == 4)
+				{
+					float hp = myParams.GetHp();
+					hp = hp - 60;
+					myParams.SetHp(hp);
+					if (hp <= 0)
+						ChangeToPlayerDead();
+				}
+				//Debug.Log(myParams.GetHp());
+			}
+
+			TimeCount = 120.0f;
+		}
 	}
 
-	
+	void OnTriggerExit(Collider col)
+    {
+		TimeCount = 120.0f;
+	}
 
 	void SkillDelay()
     {

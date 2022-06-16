@@ -12,6 +12,8 @@ public class InputManager : MonoBehaviour
 	private NPC interact_npc;
 	private Inventory inventory;
 
+	public PlayerParams Params;
+
 	private void Awake()
 	{
 		key_dictionary = new Dictionary<KeyCode, Action>
@@ -34,6 +36,7 @@ public class InputManager : MonoBehaviour
 		player = GameObject.FindWithTag("Player");
 		inventory = GameObject.Find("Inventory Controller").GetComponent<Inventory>();
 		interact_npc = GameObject.FindGameObjectWithTag("NPC").transform.GetChild(0).GetComponent<NPC>();
+		Params = GameObject.Find("Player").GetComponent<PlayerParams>();
 	}
 
 	void MouseCheck()
@@ -156,22 +159,26 @@ public class InputManager : MonoBehaviour
 		// TODO: 스킬 발동
 		//Debug.Log("Q스킬 사용11");
 		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Skill1, 5);
+		Params.curMp -= 10;
 	}
 
 	private void Skill2()
 	{
 		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Skill2, 6);
+		Params.curMp -= 15;
 		//player.GetComponent<PlayerFSM>().Skill2State();
 	}
 	
 	private void Skill3()
 	{
 		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Skill3, 7);
+		Params.curMp -= 20;
 		//player.GetComponent<PlayerFSM>().Skill3State();
 	}
 	private void Skill4()
 	{
 		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Skill4, 8);
+		Params.curMp -= 10;
 		//player.GetComponent<PlayerFSM>().Skill4State();
 	}
 }

@@ -93,15 +93,17 @@ public class BossControll : MonoBehaviour
 					_animator.SetBool("idle", true);
 					break;
 				case CurrentState.trace:
+					Quaternion lookRotation = Quaternion.LookRotation(playertransform.position - transform.position);
+					transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, Time.deltaTime * 360.0f);
 					transform.position = Vector3.MoveTowards(transform.position, playertransform.position,1);
-					Debug.Log(playertransform.position);
 					//bool k = _animator.GetBool("Walk_Cycle_1");
 					_animator.SetBool("Walk_Cycle_1", true);
 					_animator.SetBool("Attack_2", false);
 					_animator.SetBool("Attack_4", false);
 					break;
 				case CurrentState.attack1:
-					nvAgent.Stop();
+					lookRotation = Quaternion.LookRotation(playertransform.position - transform.position);
+					transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, Time.deltaTime * 360.0f);
 					_animator.SetBool("Attack_2", true);
 					_animator.SetBool("Attack_3", true);
 					_animator.SetBool("Attack_Change", true);
@@ -111,7 +113,8 @@ public class BossControll : MonoBehaviour
 					//}
 					break;
 				case CurrentState.attack2:
-					nvAgent.Stop();
+					lookRotation = Quaternion.LookRotation(playertransform.position - transform.position);
+					transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, Time.deltaTime * 360.0f);
 					_animator.SetBool("Attack_4", true);
 					_animator.SetBool("Attack_2", false);
 					_animator.SetBool("Walk_Cycle_1", false);

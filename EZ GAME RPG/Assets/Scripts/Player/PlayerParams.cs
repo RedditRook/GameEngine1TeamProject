@@ -63,11 +63,21 @@ public class PlayerParams : MonoBehaviour
     {
 		return curHp;
     }
+	public float GetMp()
+	{
+		return curMp;
+	}
+
 
 	public void SetHp(float Hp)
     {
 		curHp = Hp;
     }
+
+	public void SetMp(float Mp)
+	{
+		curMp = Mp;
+	}
 
 	void Update()
     {
@@ -111,7 +121,10 @@ public class PlayerParams : MonoBehaviour
 		curexp += expamount;
 		if (curexp >= expToLevelUp)
 		{
-			LevelUp();
+			if (level <= 9)
+			{
+				LevelUp();
+			}
 		}
 	}
 
@@ -124,6 +137,8 @@ public class PlayerParams : MonoBehaviour
 		if(equiptype == 1)
 		{
 			armortier = tier;
+			MaxHp = tier * 100;
+			MaxMp = tier * 75;
 		}
 	}
 

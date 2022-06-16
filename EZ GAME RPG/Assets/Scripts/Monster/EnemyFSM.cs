@@ -86,9 +86,24 @@ public class EnemyFSM : MonoBehaviour
 		}
 
 		player = GameObject.Find("Player").transform;
-		playerParams = player.gameObject.GetComponent<PlayerParams>();
+		//playerParams = player.gameObject.GetComponent<PlayerParams>();
 
 		hitEffects.Stop();
+	}
+
+	void OnTriggerEnter(Collider col)
+    {
+		if (col.tag == "Player")
+		{
+			GameObject ply = col.gameObject;
+			PlayerParams P_FSM = ply.GetComponent<PlayerParams>();
+			int hp = myParams.GetHp();
+			hp = hp - P_FSM.atk; // 공격력 가져오기
+			myParams.SetHp(hp);
+			if (hp <= 0)
+				CallDeadEvent();
+
+		}
 	}
 
 	public void addtoworldagain()

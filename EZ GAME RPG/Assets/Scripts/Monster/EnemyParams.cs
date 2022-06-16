@@ -27,14 +27,22 @@ public class EnemyParams : CharacterParams
 		initHPBarsize();
 	}
 
+	public int GetHp()
+    {
+		return curHp;
+    }
+
+	public void SetHp(int Hp)
+    {
+		curHp = Hp;
+    }
 	void initHPBarsize()
 	{
 		hpbar.rectTransform.localScale =new Vector3(1f, 1f, 1f);
 	}
 
-	protected override void UpdateAfterReceiveAttack()
+	void Update()
 	{
-		base.UpdateAfterReceiveAttack();
 		hpbar.rectTransform.localScale = new Vector3((float)curHp / (float)maxHp, 1f, 1f);
 	}
 

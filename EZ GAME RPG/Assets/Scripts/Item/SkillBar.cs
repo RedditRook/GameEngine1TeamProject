@@ -49,12 +49,13 @@ public class SkillBar : MonoBehaviour
 			GetSkill(for_test2);
 			GetSkill(for_test3);
 			GetSkill(for_test4);
-			//Debug.Log("스킬 추가");
+			Debug.Log("스킬 추가");
 		}
 	}
 
 	public void SetLevelText(int level)
 	{
+		
 		leveltext.text = "LV : " + level;
 	}
 }

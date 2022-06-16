@@ -16,6 +16,7 @@ public class Inventory : MonoBehaviour
 	private InventorySlot[] slots;  // 슬롯들 배열
 
 	public Item for_test;
+	public Item for_test2;
 
 	private int gold;		// 소지금
 	public TextMeshProUGUI gold_text;
@@ -177,6 +178,8 @@ public class Inventory : MonoBehaviour
 						{
 							GetItem(slots[i].item, -1);
 							player.curHp += 50;
+							if (player.curHp > 100)
+								player.curHp = 100;
 						}
 
 					}
@@ -222,6 +225,8 @@ public class Inventory : MonoBehaviour
 							GetItem(slots[i].item, -1);
 							player.curHp += 30;
 							player.curMp += 30;
+							if (player.curHp > 100)
+								player.curHp = 100;
 						}
 
 					}
@@ -234,8 +239,9 @@ public class Inventory : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.L))
 		{
-			GetItem(for_test, 1);
-			GetGold(100);
+			GetItem(for_test, 5);
+			GetItem(for_test2, 5);
+			GetGold(500);
 		}
 	}
 	public void CheatGetLeatherLow()

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tier3 Sword
   m_EditorClassIdentifier: 
   item_type: 0
-  name: Tier3 Sword
+  name: "\uAD49\uC7A5\uD788 \uAC15\uD55C \uAC80"
   item_image: {fileID: 21300000, guid: 4ab6a7652d219a8468fc1e773c456c2a, type: 3}
   item_prefab: {fileID: 0}
   forprice: {fileID: 11400000, guid: 4df7e01293e31c841b6788178174a16d, type: 2}
