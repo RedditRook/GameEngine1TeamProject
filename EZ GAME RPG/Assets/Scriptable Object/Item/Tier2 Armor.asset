@@ -16,4 +16,5 @@ MonoBehaviour:
   name: Tier2 Armor
   item_image: {fileID: 21300000, guid: 18e5656fd3a85b449a08f57573847ff9, type: 3}
   item_prefab: {fileID: 0}
+  forprice: {fileID: 11400000, guid: 88b710a7850e3e24090d271691235a36, type: 2}
   price: 0

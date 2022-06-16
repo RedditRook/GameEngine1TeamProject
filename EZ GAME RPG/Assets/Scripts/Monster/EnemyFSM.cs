@@ -40,6 +40,7 @@ public class EnemyFSM : MonoBehaviour
 	float attackDelay = 2f;
 	float attackTimer = 0f;
 
+	PlayerParams playerParams;
 
 	public ParticleSystem hitEffects;
 

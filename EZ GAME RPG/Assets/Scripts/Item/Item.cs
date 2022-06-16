@@ -16,5 +16,6 @@ public class Item : ScriptableObject
 	public string name;
 	public Sprite item_image;
 	public GameObject item_prefab;
+	public Item forprice;
 	public int price;
 }

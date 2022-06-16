@@ -18,11 +18,15 @@ public class ShopSlot : MonoBehaviour       //인벤토리 슬롯에
 		set { _inventory = value; }
 	}
 
+	public PlayerParams player;
+
 	private void Start()
 	{
 		name.text = item.name;
 		item_image.sprite = item.item_image;
 		int.TryParse(item.price.ToString(), out int_price);
+		inventory = GameObject.Find("Inventory Controller").GetComponent<Inventory>();
+		player = GameObject.Find("Player").GetComponent<PlayerParams>();
 	}
 
 	private void SetColor(float _alpha)     //아이템 투명도 조절(삭제시 알파0, 생성시 알파1)
@@ -50,7 +54,25 @@ public class ShopSlot : MonoBehaviour       //인벤토리 슬롯에
 
 	public void Buy()
 	{
-		_inventory.GetItem(item, -1);
-		_inventory.GetGold(int_price);
+		if(item.item_type == Item.ITEMTYPE.equipment)
+		{
+			if (item.name == "Tier1 Armor")
+				player.GetWeapon(1, 1);
+			if (item.name == "Tier2 Armor" && _inventory.GetItem(item.forprice, -5))
+				player.GetWeapon(1, 2);
+			if (item.name == "Tier3 Armor" && _inventory.GetItem(item.forprice, -10))
+				player.GetWeapon(1, 3);
+			if (item.name == "Tier1 Sword")
+				player.GetWeapon(0, 1);
+			if (item.name == "Tier2 Sword" && _inventory.GetItem(item.forprice, -5))
+				player.GetWeapon(0, 2);
+			if (item.name == "Tier3 Sword" && _inventory.GetItem(item.forprice, -10))
+				player.GetWeapon(0, 3);
+		}
+
+		if (_inventory.GetGold(-int_price) && item.item_type != Item.ITEMTYPE.equipment)
+		{
+			_inventory.GetItem(item, 1);
+		}
 	}
 }

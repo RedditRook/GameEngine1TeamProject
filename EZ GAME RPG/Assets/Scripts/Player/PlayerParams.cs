@@ -25,7 +25,13 @@ public class PlayerParams : MonoBehaviour
 	public bool skill4;
 	public SkillBar skillbar;
 	private bool interacting_npc;
+
+	public int weapontier;
+	public int armortier;
+
 	public bool IsInteractingNPC { get; set; }
+
+	private Equipment equipment;
 
 	void Start()
     {
@@ -33,6 +39,8 @@ public class PlayerParams : MonoBehaviour
     }
 	public void InitParams()
 	{
+		weapontier = 1;
+		armortier = 1;
 		name = "Unity";
 		level = 1;
 		MaxHp = 100;
@@ -106,6 +114,18 @@ public class PlayerParams : MonoBehaviour
 		if (curexp >= expToLevelUp)
 		{
 			LevelUp();
+		}
+	}
+
+	public void GetWeapon(int equiptype, int tier)//equiptype 0 : weapon 1 : armor
+	{
+		if(equiptype == 0)
+		{
+			weapontier = tier;
+		}
+		if(equiptype == 1)
+		{
+			armortier = tier;
 		}
 	}
 

@@ -62,25 +62,26 @@ public class Inventory : MonoBehaviour
 		inventory_image.SetActive(false);
 	}
 
-	public void GetItem(Item _item, int _count = 1)
+	public bool GetItem(Item _item, int _count = 1)
 	{
-		if (Item.ITEMTYPE.equipment != _item.item_type)
+		for (int i = 0; i < slots.Length; i++)
 		{
-			for (int i = 0; i < slots.Length; i++)
+			if (slots[i].item != null)
 			{
-				if (slots[i].item != null)
+				if (slots[i].item.name == _item.name)
 				{
-					if (slots[i].item.name == _item.name)
+					if (slots[i].item_count <= 0 && _count < 0)
 					{
-						if (slots[i].item_count <= 0 && _count < 0)
-						{
-							return;
-						}
-						else
-						{
-							slots[i].SetSlotCount(_count);
-						}
-						return;
+						return false;
+					}
+					else if (slots[i].item_count + _count < 0)
+					{
+						return false;
+					}
+					else
+					{
+						slots[i].SetSlotCount(_count);
+						return true;
 					}
 				}
 			}
@@ -92,13 +93,17 @@ public class Inventory : MonoBehaviour
 			{
 				if (_count < 0)
 				{
-					return;
+					return false;
 				}
 				else
+				{
 					slots[i].AddItem(_item, _count);
-				return;
+					return true;
+
+				}
 			}
 		}
+		return false;
 	}
 
 	public bool SpendGold(int _gold)
@@ -114,10 +119,19 @@ public class Inventory : MonoBehaviour
 		return true;
 	}
 	
-	public void GetGold(int _gold)
+	public bool GetGold(int _gold)
 	{
-		gold += _gold;
-		gold_text.text = "Gold: " + gold.ToString();
+		if(gold + _gold >= 0)
+		{
+			Debug.Log(gold + ", " + _gold);
+			gold += _gold;
+			gold_text.text = "Gold: " + gold.ToString();
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	public int SlotSize()

@@ -16,4 +16,5 @@ MonoBehaviour:
   name: Tier2 Sword
   item_image: {fileID: 21300000, guid: 47de1779bd3f1834f96c136229c6e822, type: 3}
   item_prefab: {fileID: 0}
+  forprice: {fileID: 11400000, guid: 4df7e01293e31c841b6788178174a16d, type: 2}
   price: 0
