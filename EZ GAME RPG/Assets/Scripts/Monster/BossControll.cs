@@ -31,8 +31,8 @@ public class BossControll : MonoBehaviour
 	void Start()
 	{
 		
-		AttackDis = 50.0f; // 수치개선
-		traceDis = 100.0f; // 수치 개선
+		AttackDis = 100.0f; // 수치개선
+		traceDis = 150.0f; // 수치 개선
 		Attacktackle = 25.0f; // 수치 개선
 		_transform = this.gameObject.GetComponent<Transform>();
 		playertransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
@@ -55,7 +55,7 @@ public class BossControll : MonoBehaviour
 		{
 			yield return new WaitForSeconds(1.0f);
 
-			float dis = Vector3.Distance(playertransform.position, _transform.position);
+			float dis = Vector3.Distance(playertransform.position, transform.position);
 			//Debug.Log(dis);
 			//Debug.Log(AttackDis);
 			//Debug.Log(dis);
@@ -93,10 +93,9 @@ public class BossControll : MonoBehaviour
 					_animator.SetBool("idle", true);
 					break;
 				case CurrentState.trace:
-					nvAgent.destination = playertransform.position;
-					nvAgent.Resume();
+					transform.position = Vector3.MoveTowards(transform.position, playertransform.position,1);
+					Debug.Log(playertransform.position);
 					//bool k = _animator.GetBool("Walk_Cycle_1");
-					//Debug.Log(k);
 					_animator.SetBool("Walk_Cycle_1", true);
 					_animator.SetBool("Attack_2", false);
 					_animator.SetBool("Attack_4", false);
@@ -125,4 +124,33 @@ public class BossControll : MonoBehaviour
 	}
 	// Update is called once per frame
 
+
+	public int GetState()
+    {
+		Debug.Log(curstate);
+		if(curstate == CurrentState.idle)
+        {
+			return 1;
+        }
+
+		else if (curstate == CurrentState.trace)
+		{
+			return 2;
+		}
+
+		else if (curstate == CurrentState.attack1)
+		{
+			return 3;
+		}
+
+		else if (curstate == CurrentState.attack2)
+		{
+			return 4;
+		}
+
+		else 
+			return 5;
+		
+	}
+		
 }

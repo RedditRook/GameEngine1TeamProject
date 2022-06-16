@@ -33,6 +33,8 @@ public class PlayerFSM : MonoBehaviour
 	float attackDistance = 10.0f; // 사거리
 	float chaseDistance = 2.5f;
 
+	public GameObject Boss;
+
 	PlayerAni myAni;
 	PlayerParams myParams;
 	EnemyParams curEnemyParams;
@@ -71,9 +73,23 @@ public class PlayerFSM : MonoBehaviour
 			float hp = myParams.GetHp();
 			hp = hp - E_FSM.myParams.atk; // 공격력 가져오기
 			myParams.SetHp(hp);
+		}
 
+		else if(col.tag == "BossAttack")
+        {
+			GameObject Crab = col.gameObject;
+			AttackTest AT = Crab.GetComponent<AttackTest>();
+			int st = Boss.GetComponent<BossControll>().GetState();
+			Debug.Log("보스다!!");
+			if (st == 2)
+			{
+				float hp = myParams.GetHp();
+				hp = hp - AT.atk;
+				myParams.SetHp(hp);
+			}
 			//Debug.Log(myParams.GetHp());
 		}
+
 	}
 
 	

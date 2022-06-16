@@ -55,7 +55,11 @@ public class SkillBar : MonoBehaviour
 
 	public void SetLevelText(int level)
 	{
+<<<<<<< Updated upstream
 		//Debug.Log(level);
+=======
+		
+>>>>>>> Stashed changes
 		leveltext.text = "LV : " + level;
 	}
 }

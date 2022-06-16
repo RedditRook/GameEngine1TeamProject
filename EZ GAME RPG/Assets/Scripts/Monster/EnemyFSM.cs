@@ -29,7 +29,6 @@ public class EnemyFSM : MonoBehaviour
 
 	//Transform player;
 
-	PlayerParams playerParams;
 
 	float chase_distance = 30f;  // 추적 시작 거리
 	float attack_distance = 15f; // 공격 시작 범위

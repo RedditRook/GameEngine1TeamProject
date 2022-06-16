@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class AttackTest : MonoBehaviour
 {
+	public float curHp;
+	public int atk;
+	public int def;
+	public float MaxHp;
+	public bool isDead;
+
 	public bool CheckCol = false;
 	private void OnTriggerEnter(Collider other)
 	{
@@ -28,7 +34,11 @@ public class AttackTest : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-		Debug.Log("감지 시작1111!");
+		name = "BossMob";
+		MaxHp = 1000;
+		curHp = MaxHp;
+		atk = 50;
+		def = 50;
 	}
 
 	// Update is called once per frame
