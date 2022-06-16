@@ -27,6 +27,7 @@ public class PlayerAni : MonoBehaviour
 	public void ChangeAni(int aniNumber)
 	{
 		anim.SetInteger("aniName", aniNumber);
+		
 	}
 
 

@@ -155,20 +155,23 @@ public class InputManager : MonoBehaviour
 	{
 		// TODO: 스킬 발동
 		//Debug.Log("Q스킬 사용11");
-		//player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Attack, 2);
+		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Skill1, 5);
 	}
 
 	private void Skill2()
 	{
-		//player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Attack2, 5);
+		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Skill2, 6);
+		//player.GetComponent<PlayerFSM>().Skill2State();
 	}
 	
 	private void Skill3()
 	{
-		//player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Attack3, 6);
+		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Skill3, 7);
+		//player.GetComponent<PlayerFSM>().Skill3State();
 	}
 	private void Skill4()
 	{
-		//player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Roll, 7);
+		player.GetComponent<PlayerFSM>().ChangeState(PlayerFSM.STATE.Skill4, 8);
+		//player.GetComponent<PlayerFSM>().Skill4State();
 	}
 }

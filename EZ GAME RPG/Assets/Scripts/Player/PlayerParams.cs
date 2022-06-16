@@ -2,27 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerParams : CharacterParams
-{
-	
-	public int hp;
+public class PlayerParams : MonoBehaviour
+{ 
+
+	public float curHp;
 	public int atk;
 	public int def;
-	public int dg;
-	public string name { get; set; }
-	public int curexp { get; set; }
-	public int expToLevelUp { get; set; }
-	public int money { get; set; }
+	public float MaxHp;
+	public int curexp;
+	public int expToLevelUp;
+	public int money;
+	public int level;
+	public string name;
+	public bool isDead;
 
-	public override void InitParams()
+	void Start()
+    {
+
+    }
+	public void InitParams()
 	{
 		name = "Unity";
 		level = 10;
-		maxHp = 100;
-		curHp = maxHp;
-		attack = 20;
-		defense = 5;
-
+		MaxHp = 100;
+		curHp = MaxHp;
+		atk = 20;
+		def = 5;
 		curexp = 0;
 		expToLevelUp = 100 * level;
 		money = 0;
@@ -30,9 +35,19 @@ public class PlayerParams : CharacterParams
 		isDead = false;
 	}
 
-	protected override void UpdateAfterReceiveAttack()
-	{
-		Debug.Log("Player");
-		base.UpdateAfterReceiveAttack();
-	}
+	public float GetHp()
+    {
+		return curHp;
+    }
+
+	public void SetHp(float Hp)
+    {
+		curHp = Hp;
+    }
+
+	void Update()
+    {
+
+    }
+
 }

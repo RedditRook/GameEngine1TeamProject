@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
 		max_hp = 100;
 		max_mp = 100;
 
-		hp = 100;
+		hp = 50;
 		mp = 100;
 
 		level = 1;

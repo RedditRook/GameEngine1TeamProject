@@ -19,7 +19,7 @@ public class EnemyFSM : MonoBehaviour
 	Inventory inv;
 	public Item item;
 
-	EnemyParams myParams;
+	public EnemyParams myParams;
 	PlayerParams playerparam;
 	GameObject curEnemy;
 
@@ -113,8 +113,8 @@ public class EnemyFSM : MonoBehaviour
 	}
 	public void AttackCall()
 	{		
-		int attackpower = myParams.GetAttack();
-		playerparam.SetEnemyAttack(attackpower);
+		//int attackpower = myParams.GetAttack();
+		//playerparam.SetEnemyAttack(attackpower);
 		//playerParams.SetEnemyAttack(myParams.get_random_attack());
 	}
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4956,10 +4956,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac88c6ff692081f439c16fdf219843ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
+  curHp: 0
   atk: 0
   def: 0
-  dg: 0
+  MaxHp: 0
+  curexp: 0
+  expToLevelUp: 0
+  money: 0
+  level: 0
+  name: 
+  isDead: 0
 --- !u!114 &1257445195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5427,7 +5433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e49ef58110e1d654686b43b7e04aa161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1257445197}
+  player: {fileID: 1257445194}
 --- !u!1 &1375226175 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8996979104810966863, guid: b4eb9b7decad6444c87d79bf08ce3f79,
@@ -5929,10 +5935,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac88c6ff692081f439c16fdf219843ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
+  curHp: 0
   atk: 0
   def: 0
-  dg: 0
+  MaxHp: 0
+  curexp: 0
+  expToLevelUp: 0
+  money: 0
+  level: 0
+  name: 
+  isDead: 0
 --- !u!82 &1598293632
 AudioSource:
   m_ObjectHideFlags: 0
