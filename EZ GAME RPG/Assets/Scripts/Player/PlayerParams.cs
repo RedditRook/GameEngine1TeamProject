@@ -81,7 +81,6 @@ public class PlayerParams : MonoBehaviour
 
 	void Update()
     {
-		GetEXP(1);
 	}
 
 
@@ -116,7 +115,7 @@ public class PlayerParams : MonoBehaviour
 		SkillUnlock();
 	}
 
-	void GetEXP(float expamount)
+	public void GetEXP(float expamount)
 	{
 		curexp += expamount;
 		if (curexp >= expToLevelUp)

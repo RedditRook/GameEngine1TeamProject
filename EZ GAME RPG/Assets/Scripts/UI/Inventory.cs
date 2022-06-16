@@ -246,6 +246,7 @@ public class Inventory : MonoBehaviour
 			GetItem(for_test, 5);
 			GetItem(for_test2, 5);
 			GetGold(500);
+			player.GetEXP(player.expToLevelUp);
 		}
 	}
 	public void CheatGetLeatherLow()
