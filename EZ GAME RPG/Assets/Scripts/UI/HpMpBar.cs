@@ -17,5 +17,6 @@ public class HpMpBar : MonoBehaviour
 	{
 		transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().fillAmount = player.HP / player.MaxHP;
 		transform.GetChild(1).GetChild(0).gameObject.GetComponent<Image>().fillAmount = player.MP / player.MaxMP;
+		transform.GetChild(2).GetChild(0).gameObject.GetComponent<Image>().fillAmount = player.EXP / player.MaxEXP;
 	}
 }
