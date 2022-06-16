@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyFSM : MonoBehaviour
 {
-	public Player Players;
 	public enum State
 	{
 		Idle,     //정지
@@ -16,16 +15,14 @@ public class EnemyFSM : MonoBehaviour
 	public int check;
 	public State current_state = State.Idle;
 
-	Inventory inv;
-	public Item item;
-
 	EnemyParams myParams;
-	PlayerParams playerparam;
-	GameObject curEnemy;
 
 	EnemyAni myAni;
 	GoblinAni goani;
 	SkeletonAni skeani;
+
+	Inventory inv;
+	public Item item;
 
 	Transform player;
 
@@ -41,7 +38,6 @@ public class EnemyFSM : MonoBehaviour
 	float attackDelay = 2f;
 	float attackTimer = 0f;
 
-	Vector3 curTargetPos;
 
 	public ParticleSystem hitEffects;
 
@@ -51,11 +47,9 @@ public class EnemyFSM : MonoBehaviour
 
 	Vector3 originpos;
 
-
-
 	void Start()
 	{
-		
+
 		if (check == 0)
 		{
 			myAni = GetComponent<EnemyAni>();
@@ -69,10 +63,11 @@ public class EnemyFSM : MonoBehaviour
 			skeani = GetComponent<SkeletonAni>();
 		}
 
+		hideselection();
 		myParams = GetComponent<EnemyParams>();
-		myParams.InitParams();
 		myParams.deadEvent.AddListener(CallDeadEvent);
 
+		inv = GameObject.Find("Inventory Controller").GetComponent<Inventory>();
 		if (check == 0)
 		{
 			ChangeState(State.Idle, EnemyAni.IDLE);
@@ -88,8 +83,7 @@ public class EnemyFSM : MonoBehaviour
 
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 		playerParams = player.gameObject.GetComponent<PlayerParams>();
-		hideselection();
-		inv = GameObject.Find("Inventory Controller").GetComponent<Inventory>();
+
 		hitEffects.Stop();
 	}
 
@@ -110,15 +104,13 @@ public class EnemyFSM : MonoBehaviour
 	{
 		selectmark.SetActive(true);
 	}
-	public void AttackCall()
-	{		
-		int attackpower = myParams.GetAttack();
-		playerparam.SetEnemyAttack(attackpower);
-		//playerParams.SetEnemyAttack(myParams.get_random_attack());
+	public void AttackCal()
+	{
+		int attackpower = playerParams.GetAttack();
+		myParams.SetEnemyAttack(attackpower);
 	}
 
-	
-	public void setspawnobj(GameObject respawnobj,int spawnid,Vector3 originpos)
+	public void setspawnobj(GameObject respawnobj, int spawnid, Vector3 originpos)
 	{
 		myrespawnobj = respawnobj;
 		this.spawnid = spawnid;
@@ -146,8 +138,8 @@ public class EnemyFSM : MonoBehaviour
 	IEnumerator removemefromworld()
 	{
 		yield return new WaitForSeconds(1f);
-		
-		if(check ==0)
+
+		if (check == 0)
 		{
 			inv.GetGold(100);
 			inv.GetItem(item);
@@ -262,7 +254,6 @@ public class EnemyFSM : MonoBehaviour
 
 	void AttackState()
 	{
-		AttackCall();
 		if (GetDistanceFromPlayer() > re_chase_distance)
 		{
 			attackTimer = 0f;
