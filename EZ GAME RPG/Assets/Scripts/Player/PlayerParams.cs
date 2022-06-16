@@ -31,8 +31,6 @@ public class PlayerParams : MonoBehaviour
 
 	public bool IsInteractingNPC { get; set; }
 
-	private Equipment equipment;
-
 	void Start()
     {
 

@@ -20,6 +20,8 @@ public class Inventory : MonoBehaviour
 	private int gold;		// 소지금
 	public TextMeshProUGUI gold_text;
 
+	public PlayerParams player;
+
 	void Start()
 	{
 		inventoryActivated = false;
@@ -30,7 +32,7 @@ public class Inventory : MonoBehaviour
 		gold = 0;
 		gold_text.text = "Gold: " + gold.ToString();
 
-	
+		player = GameObject.Find("Player").GetComponent<PlayerParams>();
 
 	}
 
@@ -39,7 +41,9 @@ public class Inventory : MonoBehaviour
 		//TryOpenInventory();
 		CheatGetLeather();
 		CheatGetLeatherLow();
-	
+		UseItem();
+
+
 	}
 
 	public void TryOpenInventory()
@@ -152,6 +156,78 @@ public class Inventory : MonoBehaviour
 		}
 
 		return false;
+	}
+
+	public void UseItem()
+	{
+		if (Input.GetKeyDown(KeyCode.Alpha1))
+		{
+			for (int i = 0; i < slots.Length; i++)
+			{
+				if (slots[i].item != null)
+				{
+					if (slots[i].item.name == "HP 포션")
+					{
+						Debug.Log("있다");
+						if (slots[i].item_count <= 0)
+						{
+							return;
+						}
+						else
+						{
+							GetItem(slots[i].item, -1);
+							player.curHp += 50;
+						}
+
+					}
+				}
+			}
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha2))
+		{
+			for (int i = 0; i < slots.Length; i++)
+			{
+				if (slots[i].item != null)
+				{
+					if (slots[i].item.name == "MP 포션")
+					{
+						if (slots[i].item_count <= 0)
+						{
+							return;
+						}
+						else
+						{
+							GetItem(slots[i].item, -1);
+							player.curMp += 50;
+						}
+
+					}
+				}
+			}
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha3))
+		{
+			for (int i = 0; i < slots.Length; i++)
+			{
+				if (slots[i].item != null)
+				{
+					if (slots[i].item.name == "쿠키")
+					{
+						if (slots[i].item_count <= 0)
+						{
+							return;
+						}
+						else
+						{
+							GetItem(slots[i].item, -1);
+							player.curHp += 30;
+							player.curMp += 30;
+						}
+
+					}
+				}
+			}
+		}
 	}
 
 	public void CheatGetLeather()
