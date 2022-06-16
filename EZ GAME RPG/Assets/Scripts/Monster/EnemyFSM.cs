@@ -172,27 +172,21 @@ public class EnemyFSM : MonoBehaviour
 		switch (current_state)
 		{
 			case State.Idle:
-				Debug.Log(current_state);
 				IdleState();
 				break;
 			case State.Chase:
-				Debug.Log(current_state);
 				ChaseState();
 				break;
 			case State.Attack:
-				Debug.Log(current_state);
 				AttackState();
 				break;
 			case State.Dead:
-				Debug.Log(current_state);
 				DeadState();
 				break;
 			case State.NoState:
-				Debug.Log(current_state);
 				NoState();
 				break;
 			default:
-				Debug.Log(current_state);
 				break;
 		}
 	}

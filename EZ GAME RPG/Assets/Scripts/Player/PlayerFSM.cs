@@ -69,9 +69,7 @@ public class PlayerFSM : MonoBehaviour
 			GameObject mob = col.gameObject;
 			EnemyFSM E_FSM = mob.GetComponent<EnemyFSM>();
 			float hp = myParams.GetHp();
-			Debug.Log(hp);
 			hp = hp - E_FSM.myParams.atk; // 공격력 가져오기
-			Debug.Log(hp);
 			myParams.SetHp(hp);
 
 			//Debug.Log(myParams.GetHp());

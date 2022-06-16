@@ -95,10 +95,8 @@ public class PlayerParams : MonoBehaviour
 	void LevelUp()
 	{
 		level++;
-		//Debug.Log(level);
 		curexp = 0.0f;
 		skillbar.SetLevelText(level);
-		Debug.Log(level);
 		SkillUnlock();
 	}
 
