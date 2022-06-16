@@ -87,17 +87,15 @@ public class CameraControl : MonoBehaviour
 	}
 	bool ManualRotation()
 	{
-		Vector2 input = new Vector2(
-			Input.GetAxis("Vertical"),
-			Input.GetAxis("Horizontal")
-		);
-		const float e = 0.001f;
-		if (input.x < -e || input.x > e || input.y < -e || input.y > e)
-		{
-			orbitAngles += rotationSpeed * Time.unscaledDeltaTime * input;
-			lastManualRotationTime = Time.unscaledTime;
-			return true;
-		}
+		//이게 들어가면 게임이 실했되었을때 wasd로 카메라가 움직여짐
+		//Vector2 input = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
+		//const float e = 0.001f;
+		//if (input.x < -e || input.x > e || input.y < -e || input.y > e)
+		//{
+		//	orbitAngles += rotationSpeed * Time.unscaledDeltaTime * input;
+		//	lastManualRotationTime = Time.unscaledTime;
+		//	return true;
+		//}
 		return false;
 	}
 	void OnValidate()

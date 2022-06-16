@@ -43,7 +43,6 @@ public class EnemyFSM : MonoBehaviour
 
 	Vector3 curTargetPos;
 
-
 	public ParticleSystem hitEffects;
 
 	public GameObject selectmark;
